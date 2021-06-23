@@ -1,0 +1,26 @@
+:root {
+  --primary: #00A14A;
+  --primary-lite: #C2D3BD;
+  --black: #000;
+  --red: #f00;
+  --text-primary: #222;
+  --text-gray: #97A3AE;
+  --text-blue: #3B99FC;
+  --text-green: #006930;
+  --bg-primary: #00A14A;
+  --bg-gray: #6C83AE;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@200;300;400;500;600&display=swap');
+
+html{scroll-behavior: smooth}
+body {
+  font-family: 'Sarabun';
+  background-color: #fff;
+}
+
+.head-line{border-bottom: 1px solid #E5E5E5; padding-bottom: .5rem;}
+.head-line h2{font-size: 28px; font-weight: 600;}
+.head-line .MuiTypography-caption{font-size: 16px; list-style: 100%}
+[class*=wrapContent] .MuiButton-containedPrimary{background-color: var(--primary);}
+[class*=wrapContent] .MuiButton-containedPrimary:hover{background-color: var(--text-green);}

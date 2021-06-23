@@ -1,0 +1,23 @@
+.MuiTypography-root[class*="MuiTypography-"],.MuiButton-root .MuiButton-label{font-family: 'Sarabun';}
+.hd-topic{position: relative;}
+.hd-topic::before{content: "";display: block; position: absolute; top: 50%; left: 0; right: 100px; border-top: 1px solid #E5E5E5; z-index: -1;}
+.hd-topic h3{ font-size: 18px; font-weight: 500; padding-right: 1.5rem; background-color: #fff;}
+.hd-topic .MuiButton-contained{border-radius: 5rem; height: 28px; padding-left: 1rem; padding-right: 1rem; background-color: #E5E5E5;box-shadow:none;}
+
+.srh-card{background-color: #F8F9FA;border-bottom: 1px solid #81868A;}
+.srh-card .MuiInput-underline::before,.srh-card .MuiInput-underline::after{border: none!important;}
+.srh-card .MuiInputLabel-formControl{transform: translate(8px, 11px) scale(1); font-family:"Sarabun";}
+.srh-card .MuiInputLabel-shrink{transform: translate(0, -11px) scale(.75);}
+.srh-card label + .MuiInput-formControl{margin-top: 0; min-height: 36px; }
+.srh-card .MuiIconButton-root{padding: 0; width: 36px; height: 36px;}
+/* card */
+.cardPromotion{position: relative;}
+.cardPromotion .title{background-color: #879fc7; color: #fff;padding: 10px;}
+.cardPromotion .detail{background-color: #d1dae9;padding: 10px;}
+.cardPromotion .title>*,.cardPromotion .detail>*{flex-basis: 100%; max-width: 100%;font-size: 14px;}
+.cardPromotion .title>b,.cardPromotion .detail>b{font-weight: 500;font-size: 16px;}
+.cardPromotion.draft .title{background-color: #bfcce1;}
+.cardPromotion.draft .detail{background-color: #e8edf4;}
+.cardPromotion.reject .title{background-color: #f79fa5;}
+.cardPromotion.reject .detail{background-color: #fdeaeb;}
+.cardPromotion .btn-status{font-size: 9px; padding: 0 .4rem; min-width: inherit; background-color: #9C0F0F; color: #fff;}
