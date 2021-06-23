@@ -11,15 +11,15 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import IconButton from "@material-ui/core/IconButton";
 // import SearchIcon from "@material-ui/icons/Search";
 
-import { BsCalendar } from "react-icons/bs";
+import { BsCalendar, BsThreeDots } from "react-icons/bs";
 import { FiEdit, FiSearch } from "react-icons/fi";
 import "../../assets/css/landing.css";
 
 const useStyles = makeStyles((theme) => ({
   wrapContent: {},
-  button: {
-    marginRight: theme.spacing(3),
-  },
+  // button: {
+  //   marginRight: theme.spacing(3),
+  // },
 }));
 
 const top10Theme = [
@@ -47,16 +47,15 @@ const LandingPage = () => {
           CJ Promotion
         </Typography>
       </Box>
-      <Box my={2}>
-        <Grid>
+      <Box mt={2}>
           <Button
             variant="contained"
             color="primary"
             size="small"
-            className={classes.button}
+            className="btn-main"
             startIcon={<FiEdit />}
             component={Link}
-            to="/header/create"
+            to="/promotion/create"
           >
             สร้าง Promotion record
           </Button>
@@ -65,7 +64,7 @@ const LandingPage = () => {
             variant="contained"
             color="primary"
             size="small"
-            className={classes.button}
+            className="btn-main"
             startIcon={<BsCalendar />}
             // component={Link}
             // to="/"
@@ -75,7 +74,6 @@ const LandingPage = () => {
           >
             สร้าง Theme Period
           </Button>
-        </Grid>
       </Box>
 
       <Box className="sec-box" my={2}>
@@ -98,7 +96,7 @@ const LandingPage = () => {
           </Button>
         </Box>
         <Grid container spacing={3}>
-          <Grid className="cardPromotion draft" item xs={3}>
+          <Grid className="cardPromotion draft" item xs={12} sm={6} md={4} lg={3}>
             <Grid container spacing={0}>
               <Grid className="title" item xs={4}>
                 <b>Theme</b>
@@ -111,10 +109,11 @@ const LandingPage = () => {
                 <Box>สงกรานต์</Box>
                 <Box>10/04/2564 </Box>
                 <Box color="#f00">20/04/2564</Box>
+                <BsThreeDots className="btn-dot" />
               </Grid>
             </Grid>
           </Grid>
-          <Grid className="cardPromotion reject" item xs={3}>
+          <Grid className="cardPromotion reject" item xs={12} sm={6} md={4} lg={3}>
             <Grid container spacing={0}>
               <Grid className="title" item xs={4}>
                 <b>Theme</b>
@@ -127,6 +126,7 @@ const LandingPage = () => {
                 <Box>สงกรานต์</Box>
                 <Box>10/04/2564 </Box>
                 <Box color="#f00">20/04/2564</Box>
+                <BsThreeDots className="btn-dot" />
               </Grid>
             </Grid>
           </Grid>
@@ -153,7 +153,7 @@ const LandingPage = () => {
           </Button>
         </Box>
         <Grid container spacing={3} mt={4}>
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
             <Box className="srh-card" component="form" display="flex">
               <Box flexGrow={1}>
                 <Autocomplete
@@ -174,7 +174,7 @@ const LandingPage = () => {
               </Box>
               <IconButton
                 type="submit"
-                className={classes.iconButton}
+                className="btn-search"
                 aria-label="search"
               >
                 <FiSearch />
@@ -185,7 +185,7 @@ const LandingPage = () => {
         <Box mt={2}>
           <Grid container spacing={3}>
             {Array.from({ length: 5 }).map((_, index) => (
-              <Grid key={index} className="cardPromotion" item xs={3}>
+              <Grid key={index} className="cardPromotion" item xs={12} sm={6} md={4} lg={3}>
                 <Grid container spacing={0}>
                   <Grid className="title" item xs={4}>
                     <b>Theme</b>
@@ -198,6 +198,7 @@ const LandingPage = () => {
                     <Box>สงกรานต์</Box>
                     <Box>10/04/2564 </Box>
                     <Box color="#f00">20/04/2564</Box>
+                    <BsThreeDots className="btn-dot" />
                   </Grid>
                 </Grid>
               </Grid>

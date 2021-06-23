@@ -1,0 +1,9 @@
+.MuiTypography-root[class*="MuiTypography-"],.MuiButton-root .MuiButton-label{font-family: 'Sarabun';}
+.hd-topic{position: relative;}
+.hd-topic::before{content: "";display: block; position: absolute; top: 50%; left: 0; right: 100px; border-top: 1px solid #E5E5E5; z-index: -1;}
+.hd-topic h3{ font-size: 18px; font-weight: 500; padding-right: 1.5rem; background-color: #fff;}
+.hd-topic .MuiButton-contained{border-radius: 5rem; height: 28px; padding-left: 1rem; padding-right: 1rem; background-color: #E5E5E5;box-shadow:none;}
+
+@media screen and (max-width: 576px) {
+    .hd-topic h3{font-size: 16px;}
+}

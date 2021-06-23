@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     "& img": { display: 'block',transform: 'rotate(45deg)', border: '3px solid #fff',borderRadius: '100%', maxHeight: '40px'}
   },
   button: {
-    height:'42px',
+    height:'40px',
     borderColor: '#fff',
     borderRadius: '0',
     color: '#fff'
@@ -128,7 +128,8 @@ const Header = ({ toggle, open }) => {
           
         </Box>
         <Button
-          href="#"
+          component={Link}
+          to="/"
           ccolor="secondary"
           variant="outlined"
           className={classes.button}

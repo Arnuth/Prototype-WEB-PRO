@@ -18,9 +18,28 @@ body {
   font-family: 'Sarabun';
   background-color: #fff;
 }
-
+/* main nav */
+[class*=drawer] .MuiListItem-button.active{background-color: var(--primary); color: #fff;}
+[class*=drawer] .MuiListItem-button.active svg{color: #fff;}
 .head-line{border-bottom: 1px solid #E5E5E5; padding-bottom: .5rem;}
 .head-line h2{font-size: 28px; font-weight: 600;}
 .head-line .MuiTypography-caption{font-size: 16px; list-style: 100%}
-[class*=wrapContent] .MuiButton-containedPrimary{background-color: var(--primary);}
+[class*=wrapContent] .MuiButton-containedPrimary{background-color: var(--primary);box-shadow: none;}
 [class*=wrapContent] .MuiButton-containedPrimary:hover{background-color: var(--text-green);}
+
+/* responsive */
+@media screen and (max-width: 576px) {
+[id="root"]>header>*,[id="root"]>main{margin-left: 0;}
+[id="root"]>header [class*="menuButton"]{display: block;}
+[id="root"]>header [class*="menuButton"]{margin-right: .5rem;}
+[id="root"]>header [class*="logo"] img{max-height: 50px;}
+[id="root"]>header [class*="logoTitle"]{margin-left: .25rem;}
+[id="root"]>header h2{font-size: 14px;}
+[id="root"]>header .statePath{font-size: 12px;}
+[id="root"]>header [class*=wrapNav]{flex-basis: 100%; justify-content: flex-end;}
+[id="root"]>header [class*=wrapNav] [class*=button]{height: 30px;}
+[id="root"]>main{ padding-left: 0; padding-right: 0;}
+[id="root"]>main>footer{margin-left: 0; margin-right: 0;flex-wrap: wrap;}
+[id="root"]>main>footer>*{flex-basis: 100%;}
+[id="root"]>main>footer>p{margin-top: 1rem; text-align: center;}
+}
