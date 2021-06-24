@@ -16,7 +16,7 @@ import { FiEdit, FiSearch } from "react-icons/fi";
 import "../../assets/css/landing.css";
 
 const useStyles = makeStyles((theme) => ({
-  wrapContent: {},
+  wrapContentInline: { position: 'relative'},
   // button: {
   //   marginRight: theme.spacing(3),
   // },
@@ -38,7 +38,7 @@ const top10Theme = [
 const LandingPage = () => {
   const classes = useStyles();
   return (
-    <Container maxWidth="xl" component="div" className={classes.wrapContent}>
+    <Container maxWidth="xl" component="div" className={`wrapContent ${classes.wrapContentInline}`}>
       <Box className="head-line">
         <Typography component="h2" variant="h4">
           Inbox

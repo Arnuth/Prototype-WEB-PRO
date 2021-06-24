@@ -13,7 +13,11 @@ import { yellow } from '@material-ui/core/colors';
 import "../../assets/css/Pro-Header.css";
 
 const useStyles = makeStyles((theme) => ({
-  wrapContent: {},
+  wrapContentInline: {},
+  footerBarInline: {
+    marginLeft: theme.spacing(-3),
+    marginRight: theme.spacing(-3),
+  }
   // button: {
   //   marginRight: theme.spacing(3),
   // },
@@ -33,13 +37,13 @@ const PromotionRecord = () => {
   const classes = useStyles();
   return (
     <>
-      <Container maxWidth="xl" component="div" className={classes.wrapContent}>
+      <Container maxWidth="xl" component="div" className={`wrapContent ${classes.wrapContentInline}`}>
         <Box className="head-line">
           <Typography component="h2" variant="h4">
-            Inbox
+            Create
           </Typography>
           <Typography component="p" variant="caption">
-            CJ Promotion
+            กำหนด Header
           </Typography>
         </Box>
         <Box mt={2} style={{ minHeight: "150vh" }}>
@@ -47,12 +51,16 @@ const PromotionRecord = () => {
         </Box>
       </Container>
       <Box
-        mt={3}
+        my={0}
+        pt={2}
+        py={2}
+        pl={3}
+        pr={3}
         position="sticky"
         bottom="0"
         display="flex"
         justifyContent="space-between"
-        className="footer-bar"
+        className={`footer-bar ${classes.footerBarInline}`}
       >
         <Box className="left">
           <Button
@@ -84,7 +92,8 @@ const PromotionRecord = () => {
             className={classes.margin}
             className="btn-main"
             component={Link}
-            to="/promotion/create"
+            to="/promotion/createStep2"
+            disabled // remove when Add Content
           >
             ต่อไป
           </Button>

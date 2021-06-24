@@ -17,7 +17,7 @@ import MailIcon from "@material-ui/icons/Mail";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  drawer: {
+  drawerInline: {
     width: drawerWidth,
     flexShrink: 0,
   },
@@ -62,7 +62,7 @@ const Sidebar = ({ toggleClose, open }) => {
   return (
     <>
       <Drawer
-        className={classes.drawer}
+        className={`drawer ${classes.drawerInline}`}
         variant="persistent"
         anchor="left"
         open={open}
