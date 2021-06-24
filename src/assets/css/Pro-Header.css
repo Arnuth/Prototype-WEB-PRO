@@ -4,6 +4,8 @@
 .hd-topic h3{ font-size: 18px; font-weight: 500; padding-right: 1.5rem; background-color: #fff;}
 .hd-topic .MuiButton-contained{border-radius: 5rem; height: 28px; padding-left: 1rem; padding-right: 1rem; background-color: #E5E5E5;box-shadow:none;}
 
+.text-date .MuiInputBase-root.Mui-disabled{ background-color: #FEF2D9;}
+
 @media screen and (max-width: 576px) {
     .hd-topic h3{font-size: 16px;}
 }
