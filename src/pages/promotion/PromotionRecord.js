@@ -362,7 +362,7 @@ const PromotionRecord = () => {
             </Box>
             <Box className="lucky-opt" ml={2} display="flex" alignItems="center">
               <Box mr={2}>
-                <Grid container spacing={1} alignItems="flex-end" className={state.checkedB === true ? 'enable' : 'disabled'}>
+                <Grid container spacing={2} alignItems="flex-end" className={state.checkedB === true ? 'enable' : 'disabled'}>
                   <Grid item>เริ่ม *</Grid>
                   <Grid item>
                     <TextField
@@ -386,7 +386,7 @@ const PromotionRecord = () => {
                 </Grid>
               </Box>
               <Box mr={2}>
-                <Grid container spacing={3} alignItems="flex-end" className={state.checkedB === true ? 'enable' : 'disabled'}>
+                <Grid container spacing={2} alignItems="flex-end" className={state.checkedB === true ? 'enable' : 'disabled'}>
                   <Grid item>สิ้นสุด *</Grid>
                   <Grid item>
                     <TextField
@@ -410,7 +410,7 @@ const PromotionRecord = () => {
                 </Grid>
               </Box>
             </Box>
-            <Box ml={3} display="flex" alignItems="center" style={{width:'25%', minWidth:'200px'}}>
+            <Box ml={3} display="flex" alignItems="center" className="excluded-pro" style={{width:'25%', minWidth:'200px'}}>
               <TextField id="standard-basic" label="กลุ่มสินค้ายกเว้น" style={{width:'100%'}} />
             </Box>
           </Box>
@@ -421,7 +421,7 @@ const PromotionRecord = () => {
                 สาขาที่เล่นโปรโมชั่น
               </Box>
               <Button className="btn-branch" size="small" variant="contained">
-                ทุกสาขา <BsThreeDotsVertical />
+                ทุกสาขา <BsThreeDotsVertical color="#fff" style={{marginLeft: '.5rem'}} />
               </Button>
             </Box>
           </Box>

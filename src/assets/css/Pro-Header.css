@@ -5,7 +5,7 @@
 .hd-topic .MuiButton-contained{border-radius: 5rem; height: 28px; padding-left: 1rem; padding-right: 1rem; background-color: #E5E5E5;box-shadow:none;}
 
 .box-input .MuiFormLabel-root{ font-size: 16px; font-weight: 500; color: #919191;}
-.box-input .MuiFormLabel-root.Mui-focused{color: #919191}
+.box-input .MuiFormLabel-root.Mui-focused,.excluded-pro .MuiFormLabel-root{color: #919191}
 .box-input .MuiFormLabel-root .MuiFormLabel-asterisk{color:var(--red);}
 /* Accordion  */
 .box-day-option .MuiAccordion-root{box-shadow: none;}
@@ -16,10 +16,13 @@
 .Mui-checked+.toggleAll .MuiButton-root{}
 .box-day-option .toggleDays .MuiButton-root,.toggleAll .MuiButton-root{background-color: #fff;}
 .Mui-checked+.toggleDays .active>.MuiButton-root,.Mui-checked+.toggleAll .MuiButton-root{background-color: #373F41;color: #fff;}
-.box-day-option .MuiButton-root.btn-branch{background-color: #d3dae7;}
+.box-day-option .MuiButton-root.btn-branch{background-color: #d3dae7; padding-left: 1rem; font-weight: 700;}
+.box-day-option .MuiButton-root.btn-branch .MuiButton-label{font-weight: 700; font-size: 16px;}
 .box-day-option .toggleDays li{margin-right: 16px;}
 .lucky-opt .MuiTextField-root.disabled,.lucky-opt .MuiGrid-root.disabled{ opacity: .35; pointer-events: none;}
-
+.excluded-pro .MuiFormLabel-root.Mui-focused{color: var(--red)}
+.excluded-pro .MuiInput-underline:after{border-bottom-color:var(--red);}
+/* Division */
 .selectDivision .MuiToggleButtonGroup-groupedHorizontal,
 .selectDivision .MuiToggleButtonGroup-groupedHorizontal:not(:last-child),
 .selectDivision .MuiToggleButtonGroup-groupedHorizontal:not(:first-child){border-radius: 5rem; border: none; box-shadow: none; padding:0 2rem; height: 40px; min-width: 150px; background-color: #fff; color: var(--black); font-weight: 500; margin: 0 1rem .5rem;}
@@ -27,4 +30,10 @@
 
 @media screen and (max-width: 576px) {
     .hd-topic h3{font-size: 16px;}
+    .box-luckytime{flex-wrap: wrap;}
+    .box-luckytime>*{flex-basis: 100%; max-width: 100%; margin-bottom: 1rem; margin-left: 0!important;}
+    .box-division{margin-left: -16px!important; margin-right: -16px!important; }
+    .selectDivision{padding:1rem .5rem 0!important;}
+    .selectDivision .MuiToggleButtonGroup-root{flex-wrap: wrap; justify-content: center;}
+    .selectDivision .MuiToggleButtonGroup-groupedHorizontal, .selectDivision .MuiToggleButtonGroup-groupedHorizontal:not(:last-child), .selectDivision .MuiToggleButtonGroup-groupedHorizontal:not(:first-child){min-width: 135px; margin: 0 .5rem .5rem;}
 }
