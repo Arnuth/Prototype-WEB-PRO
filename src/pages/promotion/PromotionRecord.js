@@ -12,8 +12,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import { BsCalendar, BsClock } from "react-icons/bs";
 
 import Accordion from "@material-ui/core/Accordion";
@@ -25,8 +25,8 @@ import Radio from "@material-ui/core/Radio";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 import "../../assets/css/Pro-Header.css";
 import ActiveDay from "../../components/ActiveDay";
@@ -60,15 +60,28 @@ const ColorButton = withStyles((theme) => ({
 const PromotionRecord = () => {
   const classes = useStyles();
   //select
-  const [age, setAge] = React.useState("");
-  const handleChange = (event) => {
-    setAge(event.target.value);
-    setSelectedStartDate('15-06-2564')
-    setSelectedEndDate('20-06-2564')
+  const [theme, setTheme] = React.useState("");
+  const [period , setPeriod ] = React.useState("");
+  const [format, setFormat] = React.useState("");
+  const [instore, setInstore] = React.useState("");
+
+  const handleChangeTheme = (event) => {
+    setTheme(event.target.value);
+  };
+  const handleChangePeriod = (event) => {
+    setPeriod(event.target.value);
+    setSelectedStartDate("15-06-2564");
+    setSelectedEndDate("20-06-2564");
+  };
+  const handleChangeFormat = (event) => {
+    setFormat(event.target.value);
+  };
+  const handleChangeInstore = (event) => {
+    setInstore(event.target.value);
   };
 
-  const [selectedStartDate, setSelectedStartDate] = React.useState('');
-  const [selectedEndDate, setSelectedEndDate] = React.useState('');
+  const [selectedStartDate, setSelectedStartDate] = React.useState("");
+  const [selectedEndDate, setSelectedEndDate] = React.useState("");
 
   //toggle Select type day
   const [selectedValue, setSelectedValue] = React.useState("All");
@@ -106,7 +119,6 @@ const PromotionRecord = () => {
 
   return (
     <>
-    
       <Container
         maxWidth="xl"
         component="div"
@@ -121,14 +133,13 @@ const PromotionRecord = () => {
           </Typography>
         </Box>
         <Box mt={2} className="box-input">
-        
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <FormControl required className={classes.formControl}>
-                <InputLabel htmlFor="age-native-required">Theme</InputLabel>
+                <InputLabel htmlFor="theme-required">Theme</InputLabel>
                 <Select
-                  value={age}
-                  onChange={handleChange}
+                  value={theme}
+                  onChange={handleChangeTheme}
                   displayEmpty
                   className={classes.selectBox}
                   inputProps={{ "aria-label": "Without label" }}
@@ -136,50 +147,58 @@ const PromotionRecord = () => {
                   {/* <MenuItem value="" disabled>
                     Theme *
                   </MenuItem> */}
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={10}>ซีเจลดเต็มพิกัด</MenuItem>
+                  <MenuItem value={20}>ซีเจลดถล่มราคา</MenuItem>
+                  <MenuItem value={30}>7 วันลดแรง</MenuItem>
+                  <MenuItem value={40}>แลกซื้อประชารัฐ</MenuItem>
+                  <MenuItem value={50}>แลกซื้อลดค่าครองซีพ</MenuItem>
+                  <MenuItem value={60}>ซีเจลดท้าทาย</MenuItem>
+                  <MenuItem value={70}>นาทีทองซ็อคโลก</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <FormControl required className={classes.formControl}>
-                <InputLabel id="demo-simple-select-required-label">
-                  Age
+                <InputLabel id="period-required-label">
+                  Theme Period
                 </InputLabel>
                 <Select
-                  labelId="demo-simple-select-required-label"
-                  id="demo-simple-select-required"
-                  value={age}
-                  onChange={handleChange}
-                  className={classes.selectEmpty}
+                  labelId="period-required-label"
+                  id="period-required"
+                  value={period}
+                  onChange={handleChangePeriod}
+                  className={classes.selectBox}
                 >
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={10}>Jun 2021</MenuItem>
+                  <MenuItem value={20}>Jul 2021</MenuItem>
+                  <MenuItem value={30}>Aug 2021</MenuItem>
+                  <MenuItem value={40}>Sep 2021</MenuItem>
+                  <MenuItem value={50}>Oct 2021</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-            <TextField
+              <TextField
                 className="text-date"
                 id="input-with-icon-textfield"
                 label="TextField"
                 value={selectedStartDate}
-                style={{width:'100%'}}
+                style={{ width: "100%" }}
                 disabled
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="start">
-                      <BsCalendar color="#909090" style={{marginLeft:'.5rem'}} />
+                      <BsCalendar
+                        color="#909090"
+                        style={{ marginLeft: ".5rem" }}
+                      />
                     </InputAdornment>
                   ),
                 }}
               />
-              
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <TextField
@@ -187,12 +206,15 @@ const PromotionRecord = () => {
                 id="input-with-icon-textfield"
                 label="TextField"
                 value={selectedEndDate}
-                style={{width:'100%'}}
+                style={{ width: "100%" }}
                 disabled
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="start">
-                      <BsCalendar color="#909090" style={{marginLeft:'.5rem'}} />
+                      <BsCalendar
+                        color="#909090"
+                        style={{ marginLeft: ".5rem" }}
+                      />
                     </InputAdornment>
                   ),
                 }}
@@ -200,64 +222,66 @@ const PromotionRecord = () => {
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <FormControl required className={classes.formControl}>
-                <InputLabel id="demo-simple-select-required-label">
+                <InputLabel id="format-required-label">
                   Store Format
                 </InputLabel>
                 <Select
-                  labelId="demo-simple-select-required-label"
-                  id="demo-simple-select-required"
-                  value={age}
-                  onChange={handleChange}
-                  className={classes.selectEmpty}
+                  labelId="format-required-label"
+                  id="format-required"
+                  value={format}
+                  onChange={handleChangeFormat}
+                  className={classes.selectBox}
                 >
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={10}>NINE</MenuItem>
+                  <MenuItem value={20}>Express</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <FormControl required className={classes.formControl}>
-                <InputLabel id="demo-simple-select-required-label">
+                <InputLabel id="Instore-required-label">
                   Main/In-store
                 </InputLabel>
                 <Select
-                  labelId="demo-simple-select-required-label"
-                  id="demo-simple-select-required"
-                  value={age}
-                  onChange={handleChange}
-                  className={classes.selectEmpty}
+                  labelId="Instore-required-label"
+                  id="Instore-required"
+                  value={instore}
+                  onChange={handleChangeInstore}
+                  className={classes.selectBox}
                 >
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={10}>Main</MenuItem>
+                  <MenuItem value={20}>in/store</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
           </Grid>
-        
         </Box>
-        <Box mt={2} className="box-day-option">
+        <Box mt={4} className="box-day-option">
           <Accordion>
             <AccordionSummary
               expandIcon={<RiArrowDownSFill />}
               aria-controls="panel1c-content"
               id="panel1c-header"
             >
-              <div className={classes.column}>
-                <Typography className={classes.heading}>
+              <div>
+                <Typography>
                   เลือกวันที่เล่นโปร
                 </Typography>
               </div>
             </AccordionSummary>
-            <AccordionDetails className={classes.details}>
-              <Box display="flex" justifyContent="start" alignItems="center">
+            <AccordionDetails>
+              <Box
+                display="flex"
+                pt={1}
+                justifyContent="start"
+                alignItems="center"
+              >
                 <Box component="span" mr={3}>
                   วันที่เล่นโปร
                 </Box>
@@ -274,7 +298,7 @@ const PromotionRecord = () => {
                     opacity: "0.5",
                   }}
                 />
-                <label htmlFor="pro-day-all" className="toggleDays">
+                <label htmlFor="pro-day-all" className="toggleAll">
                   <Button component="a" variant="contained">
                     ทุกวัน
                   </Button>
@@ -306,89 +330,101 @@ const PromotionRecord = () => {
             </AccordionDetails>
           </Accordion>
 
-          <Box mt={2} display="flex" alignItems="center">
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={state.checkedA}
-                  onChange={handleCheckChange}
-                  name="checkedA"
-                  color="default"
-                />
-              }
-              label="เล่นทุกสินค้า"
-            />
+          <Box
+            mt={1}
+            className="box-luckytime"
+            display="flex"
+            alignItems="flex-end"
+          >
+            <Box mr={1} pt={3} display="flex" justifyContent="center">
               <FormControlLabel
-              control={
-                <Checkbox
-                  checked={state.checkedB}
-                  onChange={handleCheckChange}
-                  name="checkedB"
-                  color="default"
-                />
-              }
-              label="ช่วงเวลานาทีทอง"
-            />
-          </Box>
-
-          <Box display="flex" alignItems="center">
-            <Box>
-            สาขาที่เล่นโปรโมชั่น
-            <Button className="btn-branch" size="small" variant="contained">ทุกสาขา <BsThreeDotsVertical /></Button>
+                control={
+                  <Checkbox
+                    checked={state.checkedA}
+                    onChange={handleCheckChange}
+                    name="checkedA"
+                    color="default"
+                  />
+                }
+                label="เล่นทุกสินค้า"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={state.checkedB}
+                    onChange={handleCheckChange}
+                    name="checkedB"
+                    color="default"
+                  />
+                }
+                label="ช่วงเวลานาทีทอง"
+              />
             </Box>
-            <Box display="flex" alignItems="center">
-              <div className={classes.margin}>
-                <Grid container spacing={1} alignItems="flex-end">
+            <Box className="lucky-opt" ml={2} display="flex" alignItems="center">
+              <Box mr={2}>
+                <Grid container spacing={1} alignItems="flex-end" className={state.checkedB === true ? 'enable' : 'disabled'}>
+                  <Grid item>เริ่ม *</Grid>
                   <Grid item>
-                    เริ่ม *
-                  </Grid>
-                  <Grid item>
-                    <TextField 
-                      id="input-with-icon-grid" 
-                      // label="Start time"
-                      style={{width:'100%'}}
+                    <TextField
+                      id="input-with-icon-grid"
+                      label="เวลา"
+                      style={{ width: "100%" }}
                       value="00:00:00"
-                      disabled
+                      
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="start">
-                            <BsClock color="#909090" style={{marginLeft:'.5rem'}} />
+                            <BsClock
+                              color="#909090"
+                              style={{ marginLeft: ".5rem" }}
+                            />
                           </InputAdornment>
                         ),
                       }}
                     />
                   </Grid>
                 </Grid>
-              </div>
-              <div className={classes.margin}>
-                <Grid container spacing={1} alignItems="flex-end">
+              </Box>
+              <Box mr={2}>
+                <Grid container spacing={3} alignItems="flex-end" className={state.checkedB === true ? 'enable' : 'disabled'}>
+                  <Grid item>สิ้นสุด *</Grid>
                   <Grid item>
-                    สิ้นสุด *
-                  </Grid>
-                  <Grid item>
-                    <TextField 
-                      id="input-with-icon-grid" 
-                      // label="Start time"
-                      style={{width:'100%'}}
+                    <TextField
+                      id="input-with-icon-grid"
+                      label="เวลา"
+                      style={{ width: "100%" }}
                       value="23:59:59"
-                      disabled
+                      
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="start">
-                            <BsClock color="#909090" style={{marginLeft:'.5rem'}} />
+                            <BsClock
+                              color="#909090"
+                              style={{ marginLeft: ".5rem" }}
+                            />
                           </InputAdornment>
                         ),
                       }}
                     />
                   </Grid>
                 </Grid>
-              </div>
+              </Box>
             </Box>
-            <Box>
-            <TextField id="standard-basic" label="กลุ่มสินค้ายกเว้น" />
+            <Box ml={3} display="flex" alignItems="center" style={{width:'25%', minWidth:'200px'}}>
+              <TextField id="standard-basic" label="กลุ่มสินค้ายกเว้น" style={{width:'100%'}} />
             </Box>
           </Box>
 
+          <Box display="flex" className="box-set-branch" mt={3} alignItems="center">
+            <Box>
+              <Box component="span" mr={2}>
+                สาขาที่เล่นโปรโมชั่น
+              </Box>
+              <Button className="btn-branch" size="small" variant="contained">
+                ทุกสาขา <BsThreeDotsVertical />
+              </Button>
+            </Box>
+          </Box>
         </Box>
         <Box
           mt={3}
@@ -465,11 +501,10 @@ const PromotionRecord = () => {
           <Button
             variant="contained"
             color="primary"
-            className={classes.margin}
             className="btn-main"
             component={Link}
             to="/promotion/createStep2"
-            disabled // remove when Add Content
+            disabled={alignment !== "" ? false : true} // remove when Add Content
           >
             ต่อไป
           </Button>

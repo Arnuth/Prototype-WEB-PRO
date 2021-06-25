@@ -4,7 +4,26 @@
 .hd-topic h3{ font-size: 18px; font-weight: 500; padding-right: 1.5rem; background-color: #fff;}
 .hd-topic .MuiButton-contained{border-radius: 5rem; height: 28px; padding-left: 1rem; padding-right: 1rem; background-color: #E5E5E5;box-shadow:none;}
 
+.box-input .MuiFormLabel-root{ font-size: 16px; font-weight: 500; color: #919191;}
+.box-input .MuiFormLabel-root.Mui-focused{color: #919191}
+.box-input .MuiFormLabel-root .MuiFormLabel-asterisk{color:var(--red);}
+/* Accordion  */
+.box-day-option .MuiAccordion-root{box-shadow: none;}
+.box-day-option .MuiAccordion-root .MuiAccordionSummary-root{background-color: #e2e6ef;}
+.box-day-option .MuiAccordion-root .MuiCollapse-container{background-color: #f0f3f7;}
 .text-date .MuiInputBase-root.Mui-disabled{ background-color: #FEF2D9;}
+.box-day-option .MuiButton-root{border-radius: 5rem; box-shadow: none;}
+.Mui-checked+.toggleAll .MuiButton-root{}
+.box-day-option .toggleDays .MuiButton-root,.toggleAll .MuiButton-root{background-color: #fff;}
+.Mui-checked+.toggleDays .active>.MuiButton-root,.Mui-checked+.toggleAll .MuiButton-root{background-color: #373F41;color: #fff;}
+.box-day-option .MuiButton-root.btn-branch{background-color: #d3dae7;}
+.box-day-option .toggleDays li{margin-right: 16px;}
+.lucky-opt .MuiTextField-root.disabled,.lucky-opt .MuiGrid-root.disabled{ opacity: .35; pointer-events: none;}
+
+.selectDivision .MuiToggleButtonGroup-groupedHorizontal,
+.selectDivision .MuiToggleButtonGroup-groupedHorizontal:not(:last-child),
+.selectDivision .MuiToggleButtonGroup-groupedHorizontal:not(:first-child){border-radius: 5rem; border: none; box-shadow: none; padding:0 2rem; height: 40px; min-width: 150px; background-color: #fff; color: var(--black); font-weight: 500; margin: 0 1rem .5rem;}
+.selectDivision .MuiToggleButtonGroup-groupedHorizontal.Mui-selected{background-color: var(--yellow);}
 
 @media screen and (max-width: 576px) {
     .hd-topic h3{font-size: 16px;}

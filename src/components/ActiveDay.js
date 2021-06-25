@@ -10,7 +10,7 @@ const ActiveDay = ({ id, name }) => {
 
 
     return (
-        <li key={id} onClick={handleToggle} className={isShow ? "Active" : ""}>
+        <li key={id} onClick={handleToggle} className={isShow ? "active" : ""}>
            <Button component="a" variant="contained"> {name} </Button>
         </li>
     )
