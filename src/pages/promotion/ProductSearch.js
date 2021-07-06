@@ -162,7 +162,7 @@ const ProductSearch = () => {
         </Box>
 
         <Box mr={2} className="wrapSearch">
-          <Grid container spacing={2} alignItems="flex-start">
+          <Grid className="StickySrh" container spacing={2} alignItems="flex-start">
             <Grid item sm className={classes.mainSaearch}>
               <Grid
                 container
@@ -211,6 +211,7 @@ const ProductSearch = () => {
           </Grid>
           <Box mt={4}>
             <Box
+              className="StickBarCtrl"
               display="flex"
               justifyContent="space-between"
               alignItems="center"

@@ -1,1 +1,5 @@
 .wrapContent .MuiDataGrid-root .MuiDataGrid-window{overflow: hidden;}
+.wrapSearch{}
+.StickySrh,.StickBarCtrl,.wrapSearch .MuiDataGrid-root .MuiDataGrid-columnsContainer{position: sticky; top: 0; background-color: #fff; z-index: 99;}
+.StickBarCtrl{top: 120px;}
+.wrapSearch .MuiDataGrid-root .MuiDataGrid-columnsContainer{ top: 162px;}
