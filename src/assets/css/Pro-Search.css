@@ -3,3 +3,6 @@
 .StickySrh,.StickBarCtrl,.wrapSearch .MuiDataGrid-root .MuiDataGrid-columnsContainer{position: sticky; top: 0; background-color: #fff; z-index: 99;}
 .StickBarCtrl{top: 120px;}
 .wrapSearch .MuiDataGrid-root .MuiDataGrid-columnsContainer{ top: 162px;}
+/* .displayTable{overflow-x: hidden!important;} */
+/* .displayTable [class*="makeStyles-paper"]{overflow-x: auto;}
+.displayTable .MuiTableContainer-root{width: 200vw!important;} */

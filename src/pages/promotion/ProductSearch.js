@@ -169,37 +169,37 @@ const ProductSearch = () => {
                 spacing={2}
                 // className={state.checkedB === true ? 'enable' : 'disabled'}
               >
-                <Grid item xs={12} sm={3} md={4} lg>
+                <Grid item xs={12} sm={3} md>
                   <TextField id="search-id" label="รหัสสินค้า" />
                 </Grid>
-                <Grid item xs={12} sm={3} md={4} lg>
+                <Grid item xs={12} sm={3} md>
                   <TextField id="search-id" label="ชื่อสินค้า" />
                 </Grid>
-                <Grid item xs={12} sm={3} md={4} lg>
+                <Grid item xs={12} sm={3} md>
                   <TextField id="search-id" label="ชื่อสินค้า" />
                 </Grid>
-                <Grid item xs={12} sm={3} md={4} lg>
+                <Grid item xs={12} sm={3} md>
                   <TextField id="search-id" label="รหัส Supplier" />
                 </Grid>
-                <Grid item xs={12} sm={3} md={4} lg>
+                <Grid item xs={12} sm={3} md>
                   <TextField id="search-id" label="ชื่อ Supplier" />
                 </Grid>
               </Grid>
 
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={3} md={4} lg>
+                <Grid item xs={12} sm={3} md>
                   <TextField id="search-id" label="รหัส Category" />
                 </Grid>
-                <Grid item xs={12} sm={3} md={4} lg>
+                <Grid item xs={12} sm={3} md>
                   <TextField id="search-id" label="รหัส Sub Category" />
                 </Grid>
-                <Grid item xs={12} sm={3} md={4} lg>
+                <Grid item xs={12} sm={3} md>
                   <TextField id="search-id" label="ชื่อ Category" />
                 </Grid>
-                <Grid item xs={12} sm={3} md={4} lg>
+                <Grid item xs={12} sm={3} md>
                   <TextField id="search-id" label="ชื่อ Sub Category" />
                 </Grid>
-                <Grid item xs={12} sm={3} md={4} lg></Grid>
+                <Grid item xs={12} sm={3} md></Grid>
               </Grid>
             </Grid>
             <Grid item>
