@@ -80,8 +80,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = ({ toggle, open }) => {
+const Header = ({ toggle, open, title, subtitle/*, updateTitle*/ }) => {
   const classes = useStyles();
+
+  // const newTitle = "Welcome to Thailand2";
+
+  // React.useEffect(() => {
+  //   updateTitle(newTitle);
+  // }, [updateTitle]);
+
   return (
     <AppBar
       position="static"
@@ -109,8 +116,8 @@ const Header = ({ toggle, open }) => {
               <img src={logo} alt="Logo" height="60" />
             </Button>
             <Box ml={2} className={classes.logoTitle}>
-                <Box component="h2" m={0} mb={.5} fontSize={18} className="title">CJ Express : Web Promotion</Box>
-                <Box fontSize={14} fontWeight={300} className="statePath">ยินดีต้อนรับ Administrator จัดซื้อ Food 1 (admin) แผนก : จัดซื้อ</Box>
+                <Box component="h2" m={0} mb={.5} fontSize={18} className="title">{title}</Box>
+                <Box fontSize={14} fontWeight={300} className="statePath">{subtitle}</Box>
             </Box>
           </Box>
         </Box>

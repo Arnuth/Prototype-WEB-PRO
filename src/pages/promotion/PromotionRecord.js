@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -33,6 +35,24 @@ import ActiveDay from "../../components/ActiveDay";
 
 const useStyles = makeStyles((theme) => ({
   wrapContentInline: {},
+  breadCrumbs: {
+    marginTop: theme.spacing(-2),
+    marginLeft: theme.spacing(-6),
+    marginRight: theme.spacing(-6),
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+    paddingLeft: theme.spacing(6),
+    paddingRight: theme.spacing(6),
+    backgroundColor: "#f0f3f7",
+    "& a": {
+      color: "#00A14A",
+      textDecoration: "none"
+    },
+    "& p": {
+      color: "#000",
+      fontWeight: "bold"
+    },
+  },
   footerBarInline: {
     marginLeft: theme.spacing(-3),
     marginRight: theme.spacing(-3),
@@ -57,8 +77,28 @@ const ColorButton = withStyles((theme) => ({
   },
 }))(Button);
 
-const PromotionRecord = () => {
+const PromotionRecord = ({updateTitle, updateSubTitle}) => {
   const classes = useStyles();
+  //update Title ,Sub Title
+  const newTitle = "Create";
+  const newSubTitle = "กำหนด Header";
+
+  // function LoadUpdateHeadTitle(newTitle) {
+  //   updateTitle(newTitle);
+  // }
+
+  // console.log(updateTitle)
+  // console.log(updateSubTitle)
+  // console.log(newTitle)
+
+
+  React.useEffect(() => {
+    console.log(newTitle)
+    console.log(newSubTitle)
+    const load = () => {updateTitle()}
+    // updateTitle(newTitle);
+  }, []);
+
   //select
   const [theme, setTheme] = React.useState("");
   const [period , setPeriod ] = React.useState("");
@@ -124,14 +164,23 @@ const PromotionRecord = () => {
         component="div"
         className={`wrapContent ${classes.wrapContentInline}`}
       >
-        <Box className="head-line">
+        {/* <Box className="head-line">
           <Typography component="h2" variant="h4">
             Create
           </Typography>
           <Typography component="p" variant="caption">
             กำหนด Header
           </Typography>
-        </Box>
+        </Box> */}
+        <Breadcrumbs className={classes.breadCrumbs} separator=">" aria-label="breadcrumb">
+          <Link as={Link} color="inherit" to="/">
+            Home
+          </Link>
+          {/* <Link color="inherit" to="/promotion/create">
+            Core
+          </Link> */}
+          <Typography color="textPrimary">กำหนด Header</Typography>
+        </Breadcrumbs>
         <Box mt={2} className="box-input">
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -281,51 +330,68 @@ const PromotionRecord = () => {
                 pt={1}
                 justifyContent="start"
                 alignItems="center"
+                flexWrap="wrap"
               >
-                <Box component="span" mr={3}>
-                  วันที่เล่นโปร
-                </Box>
-                <Radio
-                  checked={selectedValue === "All"}
-                  onChange={handleChangeDay}
-                  value="All"
-                  name="ProDay"
-                  id="pro-day-all"
-                  inputProps={{ "aria-label": "A" }}
-                  style={{
-                    visibility: "hidden",
-                    position: "absolute",
-                    opacity: "0.5",
-                  }}
-                />
-                <label htmlFor="pro-day-all" className="toggleAll">
-                  <Button component="a" variant="contained">
-                    ทุกวัน
-                  </Button>
-                </label>
-                <Box component="span" mx={3}>
-                  หรือเลือก
-                </Box>
-                <Radio
-                  checked={selectedValue === "Custom"}
-                  onChange={handleChangeDay}
-                  value="Custom"
-                  name="ProDay"
-                  id="pro-day-custom"
-                  inputProps={{ "aria-label": "B" }}
-                  style={{
-                    visibility: "hidden",
-                    position: "absolute",
-                    opacity: "0.5",
-                  }}
-                />
-                <label htmlFor="pro-day-custom" className="toggleDays">
-                  <Box component="ul" display="flex">
-                    {dataDays.map((item) => (
-                      <ActiveDay key={item.id} name={item.title} />
-                    ))}
+                <Box
+                  display="flex"
+                  mt={1}
+                  justifyContent="start"
+                  alignItems="center"
+                  flexWrap="wrap"
+                >
+                  <Box component="span" mr={3}>
+                    วันที่เล่นโปร
                   </Box>
-                </label>
+                  <Radio
+                    checked={selectedValue === "All"}
+                    onChange={handleChangeDay}
+                    value="All"
+                    name="ProDay"
+                    id="pro-day-all"
+                    inputProps={{ "aria-label": "A" }}
+                    style={{
+                      visibility: "hidden",
+                      position: "absolute",
+                      opacity: "0.5",
+                    }}
+                  />
+                  <label htmlFor="pro-day-all" className="toggleAll">
+                    <Button component="a" variant="contained">
+                      ทุกวัน
+                    </Button>
+                  </label>
+                  <Box component="span" mx={3}>
+                    หรือเลือก
+                  </Box>
+                </Box>
+                <Box
+                  display="flex"
+                  mt={1}
+                  justifyContent="start"
+                  alignItems="center"
+                  flexWrap="wrap"
+                >
+                  <Radio
+                    checked={selectedValue === "Custom"}
+                    onChange={handleChangeDay}
+                    value="Custom"
+                    name="ProDay"
+                    id="pro-day-custom"
+                    inputProps={{ "aria-label": "B" }}
+                    style={{
+                      visibility: "hidden",
+                      position: "absolute",
+                      opacity: "0.5",
+                    }}
+                  />
+                  <label htmlFor="pro-day-custom" className="toggleDays">
+                    <Box component="ul" display="flex" flexWrap="wrap">
+                      {dataDays.map((item) => (
+                        <ActiveDay key={item.id} name={item.title} />
+                      ))}
+                    </Box>
+                  </label>
+                </Box>
               </Box>
             </AccordionDetails>
           </Accordion>
@@ -335,6 +401,7 @@ const PromotionRecord = () => {
             className="box-luckytime"
             display="flex"
             alignItems="flex-end"
+            flexWrap="wrap"
           >
             <Box mr={1} pt={3} display="flex" justifyContent="center">
               <FormControlLabel
@@ -503,7 +570,7 @@ const PromotionRecord = () => {
             color="primary"
             className="btn-main"
             component={Link}
-            to="/promotion/createStep2"
+            to="/promotion/productsearch"
             disabled={alignment !== "" ? false : true} // remove when Add Content
           >
             ต่อไป

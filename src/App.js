@@ -48,6 +48,22 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
   const classes = useStyles();
   // const theme = useTheme();
+  const [HeadTitle, setHeadTitle] = React.useState('CJ Express : Web Promotion');
+  const [HeadSubTitle, setHeadSubTitle] = React.useState('ยินดีต้อนรับ Administrator จัดซื้อ Food 1 (admin) แผนก : จัดซื้อ');
+  const handleChangeHeadTitle = React.useCallback((name) => {
+    setHeadTitle(name);
+  }, []);
+  const handleChangeHeadSubTitle = React.useCallback((name) => {
+    setHeadSubTitle(name);
+  }, []);
+  // const handleChangeHeadTitle = (name) => {
+  //   setHeadTitle(name);
+  // };
+  // const handleChangeHeadSubTitle = (name) => {
+  //   setHeadSubTitle(name);
+  // };
+
+
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -60,10 +76,15 @@ const App = () => {
 
   return (
     <Router>
+      <div className="App">
       {/* <CssBaseline /> */}
       <Header 
         toggle={handleDrawerOpen} 
-        open={open} 
+        open={open}
+        title={HeadTitle}
+        subtitle={HeadSubTitle}
+        // updateTitle={handleChangeHeadTitle}
+        // updateSubTitle={handleChangeHeadSubTitle}
         className={clsx("", {
           [classes.contentShift]: open,
         })}
@@ -79,12 +100,15 @@ const App = () => {
           [classes.contentShift]: open,
         })}
       >
-        <AppRoutes />
+        <AppRoutes
+        updateTitle={handleChangeHeadTitle}
+        updateSubTitle={handleChangeHeadSubTitle}
+        />
         {/* Footer */}
         <Footer />
         {/* End footer */}
       </main>
-      
+      </div>
     </Router>
   );
 }

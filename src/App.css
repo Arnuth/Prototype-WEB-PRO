@@ -19,6 +19,7 @@ body {
   font-family: 'Sarabun';
   background-color: #fff;
 }
+.wrapContent .MuiFormLabel-root,.wrapContent .MuiInputBase-input{font-family: 'Sarabun';}
 /* main nav */
 [class*=drawer] .MuiListItem-button.active{background-color: var(--primary); color: #fff;}
 [class*=drawer] .MuiListItem-button.active svg{color: #fff;}

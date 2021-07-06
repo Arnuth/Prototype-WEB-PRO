@@ -26,7 +26,11 @@
 .selectDivision .MuiToggleButtonGroup-groupedHorizontal,
 .selectDivision .MuiToggleButtonGroup-groupedHorizontal:not(:last-child),
 .selectDivision .MuiToggleButtonGroup-groupedHorizontal:not(:first-child){border-radius: 5rem; border: none; box-shadow: none; padding:0 2rem; height: 40px; min-width: 150px; background-color: #fff; color: var(--black); font-weight: 500; margin: 0 1rem .5rem;}
-.selectDivision .MuiToggleButtonGroup-groupedHorizontal.Mui-selected{background-color: var(--yellow);}
+.selectDivision .MuiToggleButtonGroup-groupedHorizontal.Mui-selected,
+.selectDivision .MuiToggleButtonGroup-groupedHorizontal.Mui-selected:hover{background-color: var(--yellow);}
+@media screen and (max-width: 768px) {
+
+}
 
 @media screen and (max-width: 576px) {
     .hd-topic h3{font-size: 16px;}
