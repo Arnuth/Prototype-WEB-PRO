@@ -78,7 +78,7 @@ const ProductSearch = () => {
   };
 
   //Data Grid
-  const [type, setType] = React.useState('Commodity');
+  const [type, setType] = React.useState('Employee');
   const [size, setSize] = React.useState(100);
 
 
@@ -161,7 +161,7 @@ const ProductSearch = () => {
           </Typography>
         </Box>
 
-        <Box mr={2} className="wrapSearch">
+        <Box className="wrapSearch">
           <Grid className="StickySrh" container spacing={2} alignItems="flex-start">
             <Grid item sm className={classes.mainSaearch}>
               <Grid

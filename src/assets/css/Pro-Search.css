@@ -3,6 +3,23 @@
 .StickySrh,.StickBarCtrl,.wrapSearch .MuiDataGrid-root .MuiDataGrid-columnsContainer{position: sticky; top: 0; background-color: #fff; z-index: 99;}
 .StickBarCtrl{top: 120px;}
 .wrapSearch .MuiDataGrid-root .MuiDataGrid-columnsContainer{ top: 162px;}
+#left-button.disabled svg,#right-button.disabled svg{color: #ebecec;}
 /* .displayTable{overflow-x: hidden!important;} */
 /* .displayTable [class*="makeStyles-paper"]{overflow-x: auto;}
 .displayTable .MuiTableContainer-root{width: 200vw!important;} */
+/* .displayTable{max-height: calc(100vh - 300px);} */
+.tableContent{box-shadow: none;}
+.tableContent tr>*{color: #202124;border-bottom-color: #fff; border-right: 1px solid #fff}
+.tableContent thead{position: relative; z-index: 2;}
+.tableContent thead>tr,.tableContent thead>tr .MuiTableCell-stickyHeader{background-color: #66c792;}
+.tableContent tbody>tr{background-color: #E2E6EF;}
+.tableContent tbody>tr.MuiTableRow-root.Mui-selected, .tableContent tbody>tr.MuiTableRow-root.Mui-selected:hover{background-color: #E2E6EF;} /*eaf0fc*/
+.tableContent thead>tr>*,.tableContent tbody>tr>*{padding:8px 10px;max-width: 100px;}
+.tableContent .MuiCheckbox-colorSecondary.Mui-checked{color:rgba(0, 0, 0, 0.54);}
+.tableContent tr>*:first-child,
+.tableContent tr>*:nth-child(2),
+.tableContent tr>*:nth-child(3),
+.tableContent tr>*:nth-child(4){position: sticky; left: 0; z-index: 3;background-color: #E2E6EF;}
+.tableContent tr>*:nth-child(2){left: 51px;}
+.tableContent tr>*:nth-child(3){left: 102px;}
+.tableContent tr>*:nth-child(4){left: 239px;box-shadow: 3px 0 1px rgba(0,0,0,0.15);}
