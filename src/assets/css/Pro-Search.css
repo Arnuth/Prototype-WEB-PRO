@@ -22,4 +22,4 @@
 .tableContent tr>*:nth-child(4){position: sticky; left: 0; z-index: 3;background-color: #E2E6EF;}
 .tableContent tr>*:nth-child(2){left: 51px;}
 .tableContent tr>*:nth-child(3){left: 102px;}
-.tableContent tr>*:nth-child(4){left: 239px;box-shadow: 3px 0 1px rgba(0,0,0,0.15);}
+.tableContent tr>*:nth-child(4){left: 205px;box-shadow: 3px 0 1px rgba(0,0,0,0.15);}

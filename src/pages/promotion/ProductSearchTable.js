@@ -129,19 +129,19 @@ function createData(ProID, Name, Bar1, Bar2, Bar3, SupID, SupName, CatID, CatNam
 
 
 const rows = [
-  createData('000305', 'Cupcake', 3.7, 67, 4.3, 305, 3.7, 67, 4.3, 305, 3.7, 67, 4.3),
-  createData('000452', 'Donut', 25.0, 51, 4.9, 452, 25.0, 51, 4.9, 452, 25.0, 51, 4.9),
-  createData('000262', 'Eclair', 16.0, 24, 6.0, 262, 16.0, 24, 6.0, 262, 16.0, 24, 6.0),
-  createData('000159', 'Frozen yoghurt', 6.0, 24, 4.0, 159, 6.0, 24, 4.0, 159, 6.0, 24, 4.0),
-  createData('000356', 'Gingerbread', 16.0, 49, 3.9, 356, 16.0, 49, 3.9, 356, 16.0, 49, 3.9),
-  createData('000408', 'Honeycomb', 3.2, 87, 6.5, 408, 3.2, 87, 6.5, 408, 3.2, 87, 6.5),
-  createData('000237', 'Ice cream sandwich', 9.0, 37, 4.3, 237, 9.0, 37, 4.3, 237, 9.0, 37, 4.3),
-  createData('000375', 'Jelly Bean', 0.0, 94, 0.0, 375, 0.0, 94, 0.0, 375, 0.0, 94, 0.0),
-  createData('000518', 'KitKat', 26.0, 65, 7.0, 518, 26.0, 65, 7.0, 518, 26.0, 65, 7.0),
-  createData('000392', 'Lollipop', 0.2, 98, 0.0, 392, 0.2, 98, 0.0, 392, 0.2, 98, 0.0),
-  createData('000318', 'Marshmallow', 0, 81, 2.0, 318, 0, 81, 2.0, 318, 0, 81, 2.0),
-  createData('000360', 'Nougat', 19.0, 9, 37.0, 360, 19.0, 9, 37.0, 360, 19.0, 9, 37.0),
-  createData('000437', 'Oreo', 18.0, 63, 4.0, 437, 18.0, 63, 4.0, 437, 18.0, 63, 4.0),
+  createData('00030500', 'Cupcake', 3.7, 67, 4.3, 305, 3.7, 67, 4.3, 305, 3.7, 67, 4.3),
+  createData('00045212', 'Donut', 25.0, 51, 4.9, 452, 25.0, 51, 4.9, 452, 25.0, 51, 4.9),
+  createData('00026234', 'Eclair', 16.0, 24, 6.0, 262, 16.0, 24, 6.0, 262, 16.0, 24, 6.0),
+  createData('00015956', 'Frozen yoghurt', 6.0, 24, 4.0, 159, 6.0, 24, 4.0, 159, 6.0, 24, 4.0),
+  createData('00035678', 'Gingerbread', 16.0, 49, 3.9, 356, 16.0, 49, 3.9, 356, 16.0, 49, 3.9),
+  createData('00040890', 'Honeycomb', 3.2, 87, 6.5, 408, 3.2, 87, 6.5, 408, 3.2, 87, 6.5),
+  createData('00023722', 'Ice cream sandwich', 9.0, 37, 4.3, 237, 9.0, 37, 4.3, 237, 9.0, 37, 4.3),
+  createData('00037511', 'Jelly Bean', 0.0, 94, 0.0, 375, 0.0, 94, 0.0, 375, 0.0, 94, 0.0),
+  createData('00051812', 'KitKat', 26.0, 65, 7.0, 518, 26.0, 65, 7.0, 518, 26.0, 65, 7.0),
+  createData('00039213', 'Lollipop', 0.2, 98, 0.0, 392, 0.2, 98, 0.0, 392, 0.2, 98, 0.0),
+  createData('00031814', 'Marshmallow', 0, 81, 2.0, 318, 0, 81, 2.0, 318, 0, 81, 2.0),
+  createData('00036015', 'Nougat', 19.0, 9, 37.0, 360, 19.0, 9, 37.0, 360, 19.0, 9, 37.0),
+  createData('00043716', 'Oreo', 18.0, 63, 4.0, 437, 18.0, 63, 4.0, 437, 18.0, 63, 4.0),
   
 ];
 
@@ -172,18 +172,18 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'ProID', numeric: false, disablePadding: true, label: 'รหัสสินค้า', minWidth: 10, },
-  { id: 'Name', numeric: false, disablePadding: false, label: 'ชื่อสินค้า', minWidth: 80, },
+  { id: 'ProID', numeric: false, disablePadding: true, label: 'รหัสสินค้า', maxWidth: 30, },
+  { id: 'Name', numeric: false, disablePadding: false, label: 'ชื่อสินค้า', maxWidth: 80, },
   { id: 'Bar1', numeric: false, disablePadding: false, label: 'บาร์โค้ด 1', checkHead: true },
   { id: 'Bar2', numeric: false, disablePadding: false, label: 'บาร์โค้ด 2', checkHead: true },
   { id: 'Bar3', numeric: false, disablePadding: false, label: 'บาร์โค้ด 3', checkHead: true },
-  { id: 'SupID', numeric: true, disablePadding: false, label: 'รหัส Sup' },
-  { id: 'SupName', numeric: true, disablePadding: false, label: 'ชื่อ Sup' },
-  { id: 'CatID', numeric: true, disablePadding: false, label: 'รหัส Category' },
-  { id: 'CatName', numeric: true, disablePadding: false, label: 'ชื่อ Category' },
-  { id: 'SubCatCode', numeric: true, disablePadding: false, label: 'Sub Category Code' },
-  { id: 'SubCatName', numeric: true, disablePadding: false, label: 'Sub Category Name' },
-  { id: 'NR', numeric: true, disablePadding: false, label: 'N-N/R)' },
+  { id: 'SupID', numeric: true, disablePadding: false, label: 'รหัส Sup', maxWidth: 40, },
+  { id: 'SupName', numeric: false, disablePadding: false, label: 'ชื่อ Sup' },
+  { id: 'CatID', numeric: true, disablePadding: false, label: 'รหัส Category', maxWidth: 40, },
+  { id: 'CatName', numeric: false, disablePadding: false, label: 'ชื่อ Category' },
+  { id: 'SubCatCode', numeric: true, disablePadding: false, label: 'Sub Category Code',maxWidth: 40, },
+  { id: 'SubCatName', numeric: false, disablePadding: false, label: 'Sub Category Name' },
+  { id: 'NR', numeric: true, disablePadding: false, label: 'N-N/R)', maxWidth: 20, },
   { id: 'Status', numeric: true, disablePadding: false, label: 'สถานะสินค้า' },
 ];
 
@@ -211,10 +211,10 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            align={headCell.numeric ? 'center' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'default'}
             sortDirection={orderBy === headCell.id ? order : false}
-            style={{ minWidth: headCell.minWidth }}
+            style={{ maxWidth: headCell.maxWidth }}
             // width="200px"
           >
             {/* <TableSortLabel
@@ -646,6 +646,7 @@ EnhancedTableHead.propTypes = {
                                 id={labelId}
                                 scope="row"
                                 padding="none"
+                                style={{ maxWidth: 30 }}
                               >
                                 {row.ProID}
                               </TableCell>
@@ -683,19 +684,19 @@ EnhancedTableHead.propTypes = {
                                 >{row.Bar3}</label>
                               </TableCell>
 
-                              <TableCell align="right">
+                              <TableCell align="center" style={{ maxWidth: 40 }}>
                                 {row.SupID}
                               </TableCell>
-                              <TableCell align="right">{row.SupName}</TableCell>
-                              <TableCell align="right">{row.CatID}</TableCell>
-                              <TableCell align="right">{row.CatName}</TableCell>
+                              <TableCell align="left">{row.SupName}</TableCell>
+                              <TableCell align="center" style={{ maxWidth: 40 }}>{row.CatID}</TableCell>
+                              <TableCell align="left">{row.CatName}</TableCell>
 
-                              <TableCell align="right">
+                              <TableCell align="center">
                                 {row.SubCatCode}
                               </TableCell>
-                              <TableCell align="right">{row.SubCatName}</TableCell>
-                              <TableCell align="right">{row.NR}</TableCell>
-                              <TableCell align="right">{row.Status}</TableCell>
+                              <TableCell align="left">{row.SubCatName}</TableCell>
+                              <TableCell align="center" style={{ maxWidth: 20 }}>{row.NR}</TableCell>
+                              <TableCell align="center">{row.Status}</TableCell>
                             </TableRow>
                           );
                         })}
