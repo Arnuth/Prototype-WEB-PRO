@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 // import clsx from 'clsx';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -25,6 +26,9 @@ import Paper from '@material-ui/core/Paper';
 // import DeleteIcon from '@material-ui/icons/Delete';
 // import FilterListIcon from '@material-ui/icons/FilterList';
 
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
@@ -35,12 +39,23 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
 import TextField from "@material-ui/core/TextField";
+import { RiErrorWarningFill, RiCloseCircleFill } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
 import { IoTrash } from "react-icons/io5";
 import {
   IoIosArrowDropleftCircle,
   IoIosArrowDroprightCircle,
 } from "react-icons/io";
+
+import Dialog from '@material-ui/core/Dialog';
+// import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import "../../assets/css/Pro-Search.css";
 
@@ -90,24 +105,68 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 750,
   },
-  visuallyHidden: {
-    border: 0,
-    clip: 'rect(0 0 0 0)',
-    height: 1,
-    margin: -1,
-    overflow: 'hidden',
-    padding: 0,
-    position: 'absolute',
-    top: 20,
-    width: 1,
-  },
   textCounterResult: {
     color: "var(--primary)",
     fontWeight: 500,
     fontStyle: "normal",
     marginLeft: theme.spacing(2),
-  }
+  },
+  checkBox: {
+    color:"#fff",
+    '&$checked': {
+      color: "#5FA900",
+    },
+  },
+  modal: {
+    color: "var(--black)",
+    textAlign: "center",
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    "& .MuiPaper-root": { borderRadius: "12px", },
+    "& .MuiDialogTitle-root": { 
+      backgroundColor: "var(--primary)", 
+      color:"#fff",
+      paddingTop: theme.spacing(3),
+      paddingBottom: theme.spacing(3),
+      "& .MuiIconButton-root": { 
+        position: "absolute",
+        top:0,
+        right:0
+      }
+    },
+    "& .MuiDialogContent-root": {
+      width:"calc(50vh - 100px)",
+      minHeight:"calc(50vh - 100px)",
+      display: "flex",
+      flexFlow: "column wrap",
+      justifyContent: "center",
+      alignItems: "center", 
+      color:"#222",
+      "& .MuiTypography-root": { color: "#222"}
+    }
+  },
+  warning: {
+    "& .MuiDialogTitle-root": { 
+      backgroundColor: "#FCB017", 
+      color:"#fff",
+    }
+  },
+  error: {
+    "& .MuiDialogTitle-root": { 
+      backgroundColor: "#C93D3D", 
+      color:"#fff",
+    }
+  },
+  circularColor: {
+    color: "var(--primary-lite)",
+    marginBottom: "1.8rem",
+  },
+
 }));
+
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const ProductSearch = () => {
   const classes = useStyles();
@@ -155,21 +214,21 @@ function descendingComparator(a, b, orderBy) {
   return 0;
 }
 
-function getComparator(order, orderBy) {
-  return order === 'desc'
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
-}
+// function getComparator(order, orderBy) {
+//   return order === 'desc'
+//     ? (a, b) => descendingComparator(a, b, orderBy)
+//     : (a, b) => -descendingComparator(a, b, orderBy);
+// }
 
-function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) return order;
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
-}
+// function stableSort(array, comparator) {
+//   const stabilizedThis = array.map((el, index) => [el, index]);
+//   stabilizedThis.sort((a, b) => {
+//     const order = comparator(a[0], b[0]);
+//     if (order !== 0) return order;
+//     return a[1] - b[1];
+//   });
+//   return stabilizedThis.map((el) => el[0]);
+// }
 
 const headCells = [
   { id: 'ProID', numeric: false, disablePadding: true, label: 'รหัสสินค้า', maxWidth: 30, },
@@ -188,7 +247,7 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+  const { onSelectAllClick, onSelectAllBar1Click, onSelectAllBar2Click, onSelectAllBar3Click, numSelected, numBar1Selected, numBar2Selected, numBar3Selected, rowCount } = props;
   // const createSortHandler = (property) => (event) => {
   //   onRequestSort(event, property);
   // };
@@ -213,7 +272,7 @@ function EnhancedTableHead(props) {
             key={headCell.id}
             align={headCell.numeric ? 'center' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'default'}
-            sortDirection={orderBy === headCell.id ? order : false}
+            // sortDirection={orderBy === headCell.id ? order : false}
             style={{ maxWidth: headCell.maxWidth }}
             // width="200px"
           >
@@ -229,18 +288,49 @@ function EnhancedTableHead(props) {
                 </span>
               ) : null}
             </TableSortLabel> */}
-            {headCell.checkHead ?
-              <Checkbox
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={rowCount > 0 && numSelected === rowCount}
-              onChange={onSelectAllClick}
-              inputProps={{ 'aria-label': 'select all desserts' }}
-              style={{padding:"0"}}
+            {
+            headCell.checkHead ?
+            <FormControlLabel
+              control={
+                <Checkbox
+                  icon={<CheckBoxOutlineBlankIcon style={{color:"#fff"}} />}
+                  checkedIcon={<CheckBoxIcon style={{color:"#fff"}} />}
+                  indeterminate={
+                    headCell.id === "Bar1" ?
+                    numBar1Selected > 0 && numBar1Selected < rowCount
+                    : headCell.id === "Bar2" ?
+                    numBar2Selected > 0 && numBar2Selected < rowCount
+                    : headCell.id === "Bar3" &&
+                    numBar3Selected > 0 && numBar3Selected < rowCount
+
+                  }
+                  checked={
+                    headCell.id === "Bar1" ?
+                    rowCount > 0 && numBar1Selected === rowCount
+                    : headCell.id === "Bar2" ?
+                    rowCount > 0 && numBar2Selected === rowCount
+                    : headCell.id === "Bar3" &&
+                    rowCount > 0 && numBar3Selected === rowCount
+                  }
+                  onChange={
+                    headCell.id === "Bar1" ?
+                    onSelectAllBar1Click
+                    : headCell.id === "Bar2" ?
+                    onSelectAllBar2Click
+                    : headCell.id === "Bar3" &&
+                    onSelectAllBar3Click
+                    
+                  }
+                  style={{marginLeft:".2rem"}}
+                  inputProps={{ 'aria-label': 'select all desserts' }}
+                />
+              }
+              label={headCell.label}
             />
-            : null
+            : headCell.label
             }
             
-            {headCell.label}
+            
           </TableCell>
         ))}
       </TableRow>
@@ -253,26 +343,32 @@ EnhancedTableHead.propTypes = {
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-  orderBy: PropTypes.string.isRequired,
+  onSelectAllBar1Click: PropTypes.func.isRequired,
+  onSelectAllBar2Click: PropTypes.func.isRequired,
+  onSelectAllBar3Click: PropTypes.func.isRequired,
+  // order: PropTypes.oneOf(['asc', 'desc']).isRequired,
+  // orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
 };
 
 
   //state table
 
-  const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('calories');
+  // const [order, setOrder] = useState('asc');
+  // const [orderBy, setOrderBy] = useState('calories');
   const [selected, setSelected] = useState([]);
+  const [bar1Selected, setBar1Selected] = useState([]);
+  const [bar2Selected, setBar2Selected] = useState([]);
+  const [bar3Selected, setBar3Selected] = useState([]);
   // const [page, setPage] = useState(0);
   // const [dense, setDense] = useState(false);
   // const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
+  // const handleRequestSort = (event, property) => {
+  //   const isAsc = orderBy === property && order === 'asc';
+  //   setOrder(isAsc ? 'desc' : 'asc');
+  //   setOrderBy(property);
+  // };
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -303,6 +399,88 @@ EnhancedTableHead.propTypes = {
     setSelected(newSelected);
   };
 
+  const handleSelectAllBar1Click = (event) => {
+    if (event.target.checked) {
+      const newSelecteds = rows.map((n) => n.ProID);
+      setBar1Selected(newSelecteds);
+      return;
+    }
+    setBar1Selected([]);
+  };
+
+  const handleBar1Click = (event, Bar1) => {
+    const selectedIndex = bar1Selected.indexOf(Bar1);
+    let newSelected = [];
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(bar1Selected, Bar1);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(bar1Selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(bar1Selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        bar1Selected.slice(0, selectedIndex),
+        bar1Selected.slice(selectedIndex + 1),
+      );
+    }
+    setBar1Selected(newSelected);
+  };
+
+  const handleSelectAllBar2Click = (event) => {
+    if (event.target.checked) {
+      const newSelecteds = rows.map((n) => n.ProID);
+      setBar2Selected(newSelecteds);
+      return;
+    }
+    setBar2Selected([]);
+  };
+  const handleBar2Click = (event, Bar2) => {
+    const selectedIndex = bar2Selected.indexOf(Bar2);
+    let newSelected = [];
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(bar2Selected, Bar2);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(bar2Selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(bar2Selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        bar2Selected.slice(0, selectedIndex),
+        bar2Selected.slice(selectedIndex + 1),
+      );
+    }
+    setBar2Selected(newSelected);
+  };
+
+  const handleSelectAllBar3Click = (event) => {
+    if (event.target.checked) {
+      const newSelecteds = rows.map((n) => n.ProID);
+      setBar3Selected(newSelecteds);
+      return;
+    }
+    setBar3Selected([]);
+  };
+  const handleBar3Click = (event, Bar3) => {
+    const selectedIndex = bar3Selected.indexOf(Bar3);
+    let newSelected = [];
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(bar3Selected, Bar3);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(bar3Selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(bar3Selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        bar3Selected.slice(0, selectedIndex),
+        bar3Selected.slice(selectedIndex + 1),
+      );
+    }
+    setBar3Selected(newSelected);
+  };
+
   // const handleChangePage = (event, newPage) => {
   //   setPage(newPage);
   // };
@@ -317,6 +495,9 @@ EnhancedTableHead.propTypes = {
   // };
 
   const isSelected = (ProID) => selected.indexOf(ProID) !== -1;
+  const isBar1Selected = (Bar1) => bar1Selected.indexOf(Bar1) !== -1;
+  const isBar2Selected = (Bar2) => bar2Selected.indexOf(Bar2) !== -1;
+  const isBar3Selected = (Bar3) => bar3Selected.indexOf(Bar3) !== -1;
 
   // const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -384,10 +565,6 @@ EnhancedTableHead.propTypes = {
 // };
 
 
-  React.useEffect(() => {
-    // updateScroll()
-    // const dsTable = document.querySelector('.MuiDataGrid-window');
-  }, []);
 
   const [qProID, setQProID] = useState("")
   const [qName, setQName] = useState("")
@@ -414,6 +591,18 @@ EnhancedTableHead.propTypes = {
   }
 
   // console.log(qProID);
+  // Modal
+  const [open, setOpen] = React.useState(false);
+  const [error, setError] = React.useState(false);
+  const [warning, setWarning] = React.useState(true);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
@@ -529,7 +718,14 @@ EnhancedTableHead.propTypes = {
               </Grid>
             </Grid>
             <Grid item>
-              <Button className={classes.btnSaearch} variant="contained">
+              <Button 
+                className={classes.btnSaearch} 
+                variant="contained"
+                onClick={handleClickOpen}
+                // onClick={() => {
+                //   setModalShow(true)
+                // }}
+              >
                 <FiSearch size="1.2rem" style={{ marginRight: ".5rem" }} />
                 ค้นหา
               </Button>
@@ -615,32 +811,42 @@ EnhancedTableHead.propTypes = {
                     <EnhancedTableHead
                       classes={classes}
                       numSelected={selected.length}
-                      order={order}
-                      orderBy={orderBy}
+                      numBar1Selected={bar1Selected.length}
+                      numBar2Selected={bar2Selected.length}
+                      numBar3Selected={bar3Selected.length}
+                      // order={order}
+                      // orderBy={orderBy}
                       onSelectAllClick={handleSelectAllClick}
-                      onRequestSort={handleRequestSort}
+                      onSelectAllBar1Click={handleSelectAllBar1Click}
+                      onSelectAllBar2Click={handleSelectAllBar2Click}
+                      onSelectAllBar3Click={handleSelectAllBar3Click}
+                      // onRequestSort={handleRequestSort}
                       rowCount={rows.length}
                     />
                     <TableBody>
-                      {stableSort(rows, getComparator(order, orderBy))
-                        // .slice(
-                        //   page * rowsPerPage,
-                        //   page * rowsPerPage + rowsPerPage
-                        // )
-                        .map((row, index) => {
+                      {/* {stableSort(rows, getComparator(order, orderBy))
+                        .slice(
+                          page * rowsPerPage,
+                          page * rowsPerPage + rowsPerPage
+                        ) */}
+                        
+                        {rows.map((row, index) => {
                           const isItemSelected = isSelected(row.ProID);
                           const labelId = `enhanced-table-checkbox-${index}`;
                           
+                          const isItemBar1Selected = isBar1Selected(row.ProID);
                           const labelBar1Id = `bar1-checkbox-${index}`;
+                          const isItemBar2Selected = isBar2Selected(row.ProID);
                           const labelBar2Id = `bar2-checkbox-${index}`;
+                          const isItemBar3Selected = isBar3Selected(row.ProID);
                           const labelBar3Id = `bar3-checkbox-${index}`;
 
                           return (
                             <TableRow
                               // hover
-                              onClick={(event) => handleClick(event, row.ProID)}
+                              // onClick={(event) => handleClick(event, row.ProID)}
                               role="checkbox"
-                              aria-checked={isItemSelected}
+                              // aria-checked={isItemSelected}
                               tabIndex={-1}
                               key={row.ProID}
                               selected={isItemSelected}
@@ -653,6 +859,7 @@ EnhancedTableHead.propTypes = {
                                 <Checkbox
                                   style={{padding:"0"}}
                                   checked={isItemSelected}
+                                  onClick={(event) => handleClick(event, row.ProID)}
                                   inputProps={{ "aria-labelledby": labelId }}
                                 />
                               </TableCell>
@@ -677,33 +884,44 @@ EnhancedTableHead.propTypes = {
                               </TableCell>
                               <TableCell align="left">
                                 <Checkbox
-                                  style={{padding:"0"}}
-                                  checked={isItemSelected}
-                                  inputProps={{ "aria-labelledby": labelBar1Id }}
+                                  icon={<CheckBoxOutlineBlankIcon style={{color:"rgba(0, 0, 0, 0.54)"}} />}
+                                  checkedIcon={<CheckBoxIcon style={{color:"#5FA900"}} />}
+                                  style={{padding:"0", marginRight:".5rem"}}
+                                  checked={isItemBar1Selected}
+                                  onClick={(event) => handleBar1Click(event, row.ProID)}
+                                  id={labelBar1Id}
                                   />
-                                <label 
-                                htmlFor={labelBar1Id}
-                                >{row.Bar1}</label>
+                                <label htmlFor={labelBar1Id}>{row.Bar1}</label>
                               </TableCell>
                               <TableCell align="left">
                                 <Checkbox
-                                  style={{padding:"0"}}
-                                  checked={isItemSelected}
-                                  inputProps={{ "aria-labelledby": labelBar2Id }}
+                                  icon={<CheckBoxOutlineBlankIcon style={{color:"rgba(0, 0, 0, 0.54)"}} />}
+                                  checkedIcon={<CheckBoxIcon style={{color:"#5FA900"}} />}
+                                  style={{padding:"0", marginRight:".5rem"}}
+                                  checked={isItemBar2Selected}
+                                  onClick={(event) => handleBar2Click(event, row.ProID)}
+                                  id={labelBar2Id}
                                   />
-                                <label 
-                                htmlFor={labelBar2Id}
-                                >{row.Bar2}</label>
+                                <label htmlFor={labelBar2Id}>{row.Bar2}</label>
                               </TableCell>
                               <TableCell align="left">
                                 <Checkbox
-                                  style={{padding:"0"}}
+                                  icon={<CheckBoxOutlineBlankIcon style={{color:"rgba(0, 0, 0, 0.54)"}} />}
+                                  checkedIcon={<CheckBoxIcon style={{color:"#5FA900"}} />}
+                                  style={{padding:"0", marginRight:".5rem"}}
+                                  checked={isItemBar3Selected}
+                                  onClick={(event) => handleBar3Click(event, row.ProID)}
+                                  id={labelBar3Id}
+                                  />
+                                <label htmlFor={labelBar3Id}>{row.Bar3}</label>
+                                {/* <Checkbox
+                                  style={{padding:"0", marginRight:".5rem"}}
                                   checked={isItemSelected}
                                   inputProps={{ "aria-labelledby": labelBar3Id }}
                                   />
                                 <label 
                                 htmlFor={labelBar3Id}
-                                >{row.Bar3}</label>
+                                >{row.Bar3}</label> */}
                               </TableCell>
 
                               <TableCell align="center" style={{ maxWidth: 40 }}>
@@ -757,6 +975,72 @@ EnhancedTableHead.propTypes = {
               table
             </div> */}
           </Box>
+
+          <Dialog
+            open={open}
+            error={error}
+            warning={warning}
+            // className={classes.modal}
+            className={clsx(classes.modal, {
+              [classes.error]: error,
+              [classes.warning]: warning,
+            })}
+            // onClose={handleClose}
+            // fullWidth
+            maxWidth="xs"
+            TransitionComponent={Transition}
+            aria-labelledby="max-width-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {
+                error ? "ไม่พบข้อมูล" 
+                : warning ? "Error"
+                : "กำลังค้นหา"
+              }
+              <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+                  <CloseIcon />
+              </IconButton>
+            </DialogTitle>
+            <DialogContent>
+              {
+                  error ? <RiCloseCircleFill 
+                  size="7rem" 
+                  color="#C93D3D"
+                  style={{marginBottom:"1.5rem"}}
+                />
+                  : warning ? <RiErrorWarningFill 
+                  size="7rem" 
+                  color="#FCB017"
+                  style={{marginBottom:"1.5rem"}}
+                />
+                  : <CircularProgress 
+                  size="7rem" 
+                  thickness={7}
+                  className={classes.circularColor} 
+                />
+              }
+              
+              
+              
+              <DialogContentText id="alert-dialog-description">
+                  {
+                    error ? <span>Not Found</span> 
+                    : warning ? <span>กรุณากรอกข้อมูลเพื่อค้นหา <br /> หรือ  กรอกข้อมูลเพื่อค้นหาได้ 1 ประเภท เท่านั่น!</span>
+                    : "กำลังค้นหา"
+                  }
+              </DialogContentText>
+            </DialogContent>
+            {/* <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Disagree
+              </Button>
+              <Button onClick={handleClose} color="primary" autoFocus>
+                Agree
+              </Button>
+            </DialogActions> */}
+          </Dialog>
+
         </Box>
       </Container>
       <Box

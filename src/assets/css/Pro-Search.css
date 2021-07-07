@@ -19,6 +19,7 @@
     top: 0;
     z-index: 10;} */
 .tableContent thead>tr,.tableContent thead>tr .MuiTableCell-stickyHeader{background-color: #66c792;}
+.tableContent thead>tr label span{font-size: 14px; font-weight: 500;}
 .tableContent tbody>tr{background-color: #E2E6EF;}
 .tableContent tbody>tr.MuiTableRow-root.Mui-selected, .tableContent tbody>tr.MuiTableRow-root.Mui-selected:hover{background-color: #E2E6EF;}
 .tableContent thead>tr>*,.tableContent tbody>tr>*{padding:8px 10px;max-width: 100px;}
