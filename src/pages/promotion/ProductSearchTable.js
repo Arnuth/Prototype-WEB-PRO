@@ -326,32 +326,30 @@ EnhancedTableHead.propTypes = {
   // const dsTable = document.querySelector(".MuiPaper-root");
  
 
-  const dsTable = document.querySelector('.MuiDataGrid-window');
+  const dsTable = React.useRef(null);
 
   const btnLeft = () => {
-    scrollLeft(dsTable, -dsTable.scrollWidth, 300);   
+    scrollLeft(dsTable, -dsTable.current.scrollWidth, 300);   
     document
           .querySelector("#left-button")
           .classList.add("disabled");
     document
           .querySelector("#right-button")
           .classList.remove("disabled");
-    // alert("scrollLeft -300")
  }
  
   const btnRight = () => {
-    scrollLeft(dsTable, dsTable.scrollWidth, 300);
+    scrollLeft(dsTable, dsTable.current.scrollWidth, 300);
     document
           .querySelector("#left-button")
           .classList.remove("disabled");   
     document
           .querySelector("#right-button")
           .classList.add("disabled");
-    // alert("scrollLeft 300")
  }
      
  function scrollLeft(element, change, duration) {
-     var start = element.scrollLeft,
+     var start = element.current.scrollLeft,
          currentTime = 0,
          increment = 20;
          
@@ -360,7 +358,7 @@ EnhancedTableHead.propTypes = {
      var animateScroll = function(){        
          currentTime += increment;
          var val = Math.easeInOutQuad(currentTime, start, change, duration);
-         element.scrollLeft = val;
+         element.current.scrollLeft = val;
          if(currentTime < duration) {
              setTimeout(animateScroll, increment);
          }
@@ -378,6 +376,12 @@ EnhancedTableHead.propTypes = {
    t--;
    return -c/2 * (t*(t-2) - 1) + b;
  };
+
+// const ref = React.useRef(null);
+
+// const scroll = (scrollOffset) => {
+//   ref.current.scrollLeft += scrollOffset;
+// };
 
 
   React.useEffect(() => {
@@ -553,7 +557,7 @@ EnhancedTableHead.propTypes = {
                   id="left-button"
                   className="disabled"
                   onClick={btnLeft}
-                  // onClick={() => scroll(300)}
+                  // onClick={() => scroll(-400)}
                 >
                   <IoIosArrowDropleftCircle size="2rem" />
                 </Box>
@@ -561,7 +565,7 @@ EnhancedTableHead.propTypes = {
                   ml={1}
                   id="right-button"
                   onClick={btnRight}
-                  // onClick={() => scroll(-300)}
+                  // onClick={() => scroll(400)}
                 >
                   <IoIosArrowDroprightCircle size="2rem" />
                 </Box>
@@ -572,6 +576,7 @@ EnhancedTableHead.propTypes = {
               id="dsTable"
               className="displayTable MuiDataGrid-window" 
               style={{overflowX:"hidden"}}
+              ref={dsTable}
             >
                 <div className="MuiDataGrid-dataContainer" style={{width:"150vw",}}>
 
