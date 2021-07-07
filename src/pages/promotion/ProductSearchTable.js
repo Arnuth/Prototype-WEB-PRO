@@ -16,7 +16,7 @@ import TableRow from '@material-ui/core/TableRow';
 // import TableSortLabel from '@material-ui/core/TableSortLabel';
 // import Toolbar from '@material-ui/core/Toolbar';
 // import Typography from '@material-ui/core/Typography';
-// import Paper from '@material-ui/core/Paper';
+import Paper from '@material-ui/core/Paper';
 // import Checkbox from '@material-ui/core/Checkbox';
 // import IconButton from '@material-ui/core/IconButton';
 // import Tooltip from '@material-ui/core/Tooltip';
@@ -129,19 +129,19 @@ function createData(ProID, Name, Bar1, Bar2, Bar3, SupID, SupName, CatID, CatNam
 
 
 const rows = [
-  createData('00030500', 'Cupcake', 3.7, 67, 4.3, 305, 3.7, 67, 4.3, 305, 3.7, 67, 4.3),
-  createData('00045212', 'Donut', 25.0, 51, 4.9, 452, 25.0, 51, 4.9, 452, 25.0, 51, 4.9),
-  createData('00026234', 'Eclair', 16.0, 24, 6.0, 262, 16.0, 24, 6.0, 262, 16.0, 24, 6.0),
-  createData('00015956', 'Frozen yoghurt', 6.0, 24, 4.0, 159, 6.0, 24, 4.0, 159, 6.0, 24, 4.0),
-  createData('00035678', 'Gingerbread', 16.0, 49, 3.9, 356, 16.0, 49, 3.9, 356, 16.0, 49, 3.9),
-  createData('00040890', 'Honeycomb', 3.2, 87, 6.5, 408, 3.2, 87, 6.5, 408, 3.2, 87, 6.5),
-  createData('00023722', 'Ice cream sandwich', 9.0, 37, 4.3, 237, 9.0, 37, 4.3, 237, 9.0, 37, 4.3),
-  createData('00037511', 'Jelly Bean', 0.0, 94, 0.0, 375, 0.0, 94, 0.0, 375, 0.0, 94, 0.0),
-  createData('00051812', 'KitKat', 26.0, 65, 7.0, 518, 26.0, 65, 7.0, 518, 26.0, 65, 7.0),
-  createData('00039213', 'Lollipop', 0.2, 98, 0.0, 392, 0.2, 98, 0.0, 392, 0.2, 98, 0.0),
-  createData('00031814', 'Marshmallow', 0, 81, 2.0, 318, 0, 81, 2.0, 318, 0, 81, 2.0),
-  createData('00036015', 'Nougat', 19.0, 9, 37.0, 360, 19.0, 9, 37.0, 360, 19.0, 9, 37.0),
-  createData('00043716', 'Oreo', 18.0, 63, 4.0, 437, 18.0, 63, 4.0, 437, 18.0, 63, 4.0),
+  createData('00030500', 'Cupcake', 3.7, 67, 4.3, '0000100089', 3.7, 'E067', 4.3, 'ES305', 3.7, 67, 'A'),
+  createData('00045212', 'Donut', 25.0, 51, 4.9, '0000100452', 25.0, 'E051', 4.9, 'ES452', 25.0, 51, 'CP'),
+  createData('00026234', 'Eclair', 16.0, 24, 6.0, '0000100262', 16.0, 'E024', 6.0, 'ES262', 16.0, 24, 'A'),
+  createData('00015956', 'Frozen yoghurt', 6.0, 24, 4.0, '0000100159', 6.0, 'E024', 4.0, 'ES159', 6.0, 24, 'A'),
+  createData('00035678', 'Gingerbread', 16.0, 49, 3.9, '0000100356', 16.0, 'E049', 3.9, 'ES356', 16.0, 49, 'A'),
+  createData('00040890', 'Honeycomb', 3.2, 87, 6.5, '0000100408', 3.2, 'E087', 6.5, 'ES408', 3.2, 87, 'N'),
+  createData('00023722', 'Ice cream sandwich', 9.0, 37, 4.3, '0000100237', 9.0, 'E037', 4.3, 'ES237', 9.0, 37, 'C'),
+  createData('00037511', 'Jelly Bean', 0.0, 94, 0.0, '0000100375', 0.0, 'E094', 0.0, 'ES375', 0.0, 94, 'N'),
+  createData('00051812', 'KitKat', 26.0, 65, 7.0, '0000100518', 26.0, 'E065', 7.0, 'ES518', 26.0, 65, 'A'),
+  createData('00039213', 'Lollipop', 0.2, 98, 0.0, '0000100392', 0.2, 'E098', 0.0, 'ES392', 0.2, 98, 'CP'),
+  createData('00031814', 'Marshmallow', 0, 81, 2.0, '0000100318', 0, 'E081', 2.0, 'ES318', 0, 81, 'A'),
+  createData('00036015', 'Nougat', 19.0, 9, 37.0, '0000100360', 19.0, 'E009', 37.0, 'ES360', 19.0, 9, 'N'),
+  createData('00043716', 'Oreo', 18.0, 63, 4.0, '0000100437', 18.0, 'E063', 4.0, 'ES437', 18.0, 63, 'C'),
   
 ];
 
@@ -400,6 +400,19 @@ EnhancedTableHead.propTypes = {
   const [qCatName, setQCatName] = useState("")
   const [qSubCatName, setQSubCatName] = useState("")
 
+  function clearInput() {
+    setQProID("");
+    setQName("");
+    setQBarcode("");
+    setQSupID("");
+    setQSupName("");
+
+    setQCatID("");
+    setQSubCatID("");
+    setQCatName("");
+    setQSubCatName("");
+  }
+
   // console.log(qProID);
 
   return (
@@ -548,7 +561,10 @@ EnhancedTableHead.propTypes = {
                   }
                   label="เลือกทั้งหมด"
                 />
-                <Button variant="text">
+                <Button 
+                  variant="text"
+                  onClick={() => clearInput()}
+                >
                   <IoTrash color="#f00" style={{ marginRight: ".3rem" }} />
                   ลบทั้งหมด
                 </Button>
@@ -576,16 +592,22 @@ EnhancedTableHead.propTypes = {
               id="dsTable"
               className="displayTable MuiDataGrid-window" 
               style={{overflowX:"hidden"}}
-              ref={dsTable}
+              // ref={dsTable}
             >
-                <div className="MuiDataGrid-dataContainer" style={{width:"150vw",}}>
-
+                <div className="hiddenScroll" 
+                // style={{width:"150vw",}}
+                style={{overflow:'hidden'}} 
+                >
+              <Paper className={classes.root} style={{marginBottom:'-16px'}} >
                 {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
-                <TableContainer style={{overflow:"visible"}}>
+                <TableContainer 
+                // style={{maxHeight:"400px"}} 
+                ref={dsTable}
+                >
                   <Table
                     stickyHeader
                     className={`tableContent ${classes.table}`}
-                    style={{overflow:"hidden"}}
+                    style={{width:"150vw"}}
                     aria-labelledby="tableTitle"
                     // size={dense ? "small" : "medium"}
                     aria-label="sticky table"
@@ -720,6 +742,8 @@ EnhancedTableHead.propTypes = {
                   onChangePage={handleChangePage}
                   onChangeRowsPerPage={handleChangeRowsPerPage}
                 /> */}
+
+                </Paper>
 
                 </div>
 
