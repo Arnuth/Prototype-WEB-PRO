@@ -30,7 +30,7 @@
 .tableContent tr>*:first-child,
 .tableContent tr>*:nth-child(2),
 .tableContent tr>*:nth-child(3),
-.tableContent tr>*:nth-child(4){position: sticky; left: 0; z-index: 3;background-color: #E2E6EF; box-sizing: border-box;}
+.tableContent tr>*:nth-child(4){position: sticky; left: 0; z-index: 1;background-color: #E2E6EF; box-sizing: border-box;}
 .tableContent tr>*:nth-child(2){left: 48px;}
 .tableContent tr>*:nth-child(3){left: 96px; min-width: 50px;}
 .tableContent tr>*:nth-child(4){left: 181.5px; min-width: 115px; box-shadow: 3px 0 1px rgba(0,0,0,0.15);}
@@ -38,3 +38,7 @@
 .displayTable:not(.fix-head) [style*="max-height"]>.tableContent tr>*:nth-child(2),
 .displayTable:not(.fix-head) [style*="max-height"]>.tableContent tr>*:nth-child(3),
 .displayTable:not(.fix-head) [style*="max-height"]>.tableContent tr>*:nth-child(4){z-index: 1;} */
+.displayTable.fix-head [style*="max-height"]>.tableContent tr>*:first-child,
+.displayTable.fix-head [style*="max-height"]>.tableContent tr>*:nth-child(2),
+.displayTable.fix-head [style*="max-height"]>.tableContent tr>*:nth-child(3),
+.displayTable.fix-head [style*="max-height"]>.tableContent tr>*:nth-child(4){z-index: 3;}
