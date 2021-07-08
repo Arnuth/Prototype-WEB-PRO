@@ -11,6 +11,7 @@
 /* .displayTable [class*="makeStyles-paper"]{overflow-x: auto;}
 .displayTable .MuiTableContainer-root{width: 200vw!important;} */
 /* .displayTable{max-height: calc(100vh - 300px);} */
+.displayTable .tableContent{max-height: calc(100vh - 300px);min-width:2400px;}
 .tableContent{box-shadow: none;overflow:auto;/*position: sticky;top: 0;z-index: 10;*/}
 .tableContent tr>*{color: #202124;border-bottom-color: #fff; border-right: 1px solid #fff;font-family: "Sarabun";}
 .tableContent thead{position: relative; z-index: 2;}
@@ -20,14 +21,15 @@
     z-index: 10;} */
 .tableContent thead>tr,.tableContent thead>tr .MuiTableCell-stickyHeader{background-color: #66c792;}
 .tableContent thead>tr label span{font-size: 14px; font-weight: 500;}
-.tableContent tbody>tr{background-color: #E2E6EF;}
+.tableContent tbody>tr{background-color: #E2E6EF;white-space: nowrap;}
+.tableContent tbody>tr .disabled{opacity: .35; pointer-events: none;}
 .tableContent tbody>tr.MuiTableRow-root.Mui-selected, .tableContent tbody>tr.MuiTableRow-root.Mui-selected:hover{background-color: #E2E6EF;}
-.tableContent thead>tr>*,.tableContent tbody>tr>*{padding:8px 10px;max-width: 100px;}
+.tableContent thead>tr>*,.tableContent tbody>tr>*{padding:8px 10px;max-width: 115px;}
 .tableContent .MuiCheckbox-colorSecondary.Mui-checked{color:rgba(0, 0, 0, 0.54);}
 .tableContent tr>*:first-child,
 .tableContent tr>*:nth-child(2),
 .tableContent tr>*:nth-child(3),
-.tableContent tr>*:nth-child(4){position: sticky; left: 0; z-index: 3;background-color: #E2E6EF;}
-.tableContent tr>*:nth-child(2){left: 51px;}
-.tableContent tr>*:nth-child(3){left: 102px;}
-.tableContent tr>*:nth-child(4){left: 205.5px;box-shadow: 3px 0 1px rgba(0,0,0,0.15);}
+.tableContent tr>*:nth-child(4){position: sticky; left: 0; z-index: 3;background-color: #E2E6EF; box-sizing: border-box;}
+.tableContent tr>*:nth-child(2){left: 48px;}
+.tableContent tr>*:nth-child(3){left: 96px; min-width: 50px;}
+.tableContent tr>*:nth-child(4){left: 182px; min-width: 115px; box-shadow: 3px 0 1px rgba(0,0,0,0.15);}

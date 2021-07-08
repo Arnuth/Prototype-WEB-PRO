@@ -188,19 +188,19 @@ function createData(ProID, Name, Bar1, Bar2, Bar3, SupID, SupName, CatID, CatNam
 
 
 const rows = [
-  createData('00030500', 'Cupcake', 3.7, 67, 4.3, '0000100089', 3.7, 'E067', 4.3, 'ES305', 3.7, 67, 'A'),
-  createData('00045212', 'Donut', 25.0, 51, 4.9, '0000100452', 25.0, 'E051', 4.9, 'ES452', 25.0, 51, 'CP'),
-  createData('00026234', 'Eclair', 16.0, 24, 6.0, '0000100262', 16.0, 'E024', 6.0, 'ES262', 16.0, 24, 'A'),
-  createData('00015956', 'Frozen yoghurt', 6.0, 24, 4.0, '0000100159', 6.0, 'E024', 4.0, 'ES159', 6.0, 24, 'A'),
-  createData('00035678', 'Gingerbread', 16.0, 49, 3.9, '0000100356', 16.0, 'E049', 3.9, 'ES356', 16.0, 49, 'A'),
-  createData('00040890', 'Honeycomb', 3.2, 87, 6.5, '0000100408', 3.2, 'E087', 6.5, 'ES408', 3.2, 87, 'N'),
-  createData('00023722', 'Ice cream sandwich', 9.0, 37, 4.3, '0000100237', 9.0, 'E037', 4.3, 'ES237', 9.0, 37, 'C'),
-  createData('00037511', 'Jelly Bean', 0.0, 94, 0.0, '0000100375', 0.0, 'E094', 0.0, 'ES375', 0.0, 94, 'N'),
-  createData('00051812', 'KitKat', 26.0, 65, 7.0, '0000100518', 26.0, 'E065', 7.0, 'ES518', 26.0, 65, 'A'),
-  createData('00039213', 'Lollipop', 0.2, 98, 0.0, '0000100392', 0.2, 'E098', 0.0, 'ES392', 0.2, 98, 'CP'),
-  createData('00031814', 'Marshmallow', 0, 81, 2.0, '0000100318', 0, 'E081', 2.0, 'ES318', 0, 81, 'A'),
-  createData('00036015', 'Nougat', 19.0, 9, 37.0, '0000100360', 19.0, 'E009', 37.0, 'ES360', 19.0, 9, 'N'),
-  createData('00043716', 'Oreo', 18.0, 63, 4.0, '0000100437', 18.0, 'E063', 4.0, 'ES437', 18.0, 63, 'C'),
+  createData('20000573', '108shop1000g', '8850002022225 / PC / 1', '08850002022225 / CAR / 12', 0, '0000100184', 'บริษัท สหพัฒนพิบูล จำกัด (มหาชน)', '90100', '108shop', '90103', '', 67, 'A'),
+  createData('20000572', '108shop3500g', '8850002022232 / PC / 1', '08850002022232 / CAR / 4', 0, '0000100452', 'บริษัท สหพัฒนพิบูล จำกัด (มหาชน)', '90100', '108shop', '90103', '', 51, 'CP'),
+  createData('20002829', 'Ecกูนน์เทปRG M16lair', '8858947811003 / PAC / 1', '18858947811000 / CAR / 8', 0, '0000100951', 'บริษัท สหพัฒนพิบูล จำกัด (มหาชน)', 'J0900', 'กูนน์', 'J0910', 'กูนน์เทป', 24, 'A'),
+  createData('20013022', 'กูนน์เฟรนด์แพ้นท์S18', '8858947823525 / PAC / 1', '18858947823522 / CAR / 12', 0, '0000100951', 'บริษัท สหพัฒนพิบูล จำกัด (มหาชน)', 'J0900', 'กูนน์', 'J0904', 'กูนน์เฟรนด์', 24, 'A'),
+  createData('20030091', 'คิเรอิคิเรอิเจลล้างมือ50ml', '8850002023390 / PC / 1', '8850002023406 / PAC / 6', '08850002023390 / CAR / 24', '0000100184', 'บริษัท สหพัฒนพิบูล จำกัด (มหาชน)', '30700', 'คิเรอิ', '30708', 'คิเรอิโฟมล้างมือ', 49, 'A'),
+  createData('20001331', 'คิเรอิโฟมล้างมือ250ml', '8850002020238 / PC / 1', '08850002020238 / CAR / 24', 0, '0000100184', 'บริษัท สหพัฒนพิบูล จำกัด (มหาชน)', '30700', 'คิเรอิ', '30706', 'คิเรอิโฟมล้างมือ', 87, 'N'),
+  createData('20023288', 'คิเรอิโฟมล้างมือถุง200ml', '8850002020245 / PC / 1', '8850002023321 / PAC / 3', '08850002020245 / CAR / 24', '0000100184', 'บริษัท สหพัฒนพิบูล จำกัด (มหาชน)', '30700', 'คิเรอิ', '30706', 'คิเรอิโฟมล้างมือ', 37, 'C'),
+  createData('00037511', 'เลย์คลาสสิคโนริสาหร่าย50g', '8850718801886 / PC / 1', '8850718701889 / PAC / 6', '8850718901883 / CAR / 48', '0000100089', 'บริษัท เป๊ปซี่-โคล่า (ไทย)เทรดดิ้ง จำกัด', 'E0300', 'เลย์', 'E0302', 'เลย์คลาสสิค', 94, 'N'),
+  createData('00051812', 'เลย์คลาสสิคพริกเผ็ดซี๊ด48g ', '8850718813711 / PC / 1', '8850718711468 / PAC / 6', '8850718916474 / CAR / 48', '0000100089', 'บริษัท เป๊ปซี่-โคล่า (ไทย)เทรดดิ้ง จำกัด', 'E0300', 'เลย์', 'E0302', 'เลย์คลาสสิค', 65, 'A'),
+  createData('00039213', 'เลย์คลาสสิคมันฝรั่งแท้13gx12', '8850718801152 / PC / 1', '8850718701155 / PAC / 12', '8850718909957 / CAR / 144', '0000100089', 'บริษัท เป๊ปซี่-โคล่า (ไทย)เทรดดิ้ง จำกัด', 'E0300', 'เลย์', 'E0302', 'เลย์คลาสสิค', 98, 'CP'),
+  createData('00031814', 'เลย์คลาสสิคมันฝรั่งแท้50g', '8850718801473 / PC / 1', '8850718701476 / PAC / 6', '8850718901470 / CAR / 48', '0000100089', 'บริษัท เป๊ปซี่-โคล่า (ไทย)เทรดดิ้ง จำกัด', 'E0300', 'เลย์', 'E0302', 'เลย์คลาสสิค', 81, 'A'),
+  createData('00036015', 'เลย์คลาสสิคเมี่ยงคำครบรส50g', '8850718807925 / PC / 1', '8850718707690 / PAC / 6', '8850718908417 / CAR / 48', '0000100089', 'บริษัท เป๊ปซี่-โคล่า (ไทย)เทรดดิ้ง จำกัด', 'E0300', 'เลย์', 'E0302', 'เลย์คลาสสิค', 9, 'N'),
+  createData('20034695', 'เลย์แมกซ์ รสพริกปีศาจ 48g ', '8850718815289 / PC / 1', '8850718712298 / PAC / 6', '8850718918188 / CAR / 48', '0000100089', 'บริษัท เป๊ปซี่-โคล่า (ไทย)เทรดดิ้ง จำกัด', 'E0300', 'เลย์', 'E0302', 'เลย์แมกซ์', 63, 'C'),
   
 ];
 
@@ -231,18 +231,18 @@ function descendingComparator(a, b, orderBy) {
 // }
 
 const headCells = [
-  { id: 'ProID', numeric: false, disablePadding: true, label: 'รหัสสินค้า', maxWidth: 30, },
-  { id: 'Name', numeric: false, disablePadding: false, label: 'ชื่อสินค้า', maxWidth: 80, },
+  { id: 'ProID', numeric: false, disablePadding: true, label: 'รหัสสินค้า', maxWidth: 50, },
+  { id: 'Name', numeric: false, disablePadding: false, label: 'ชื่อสินค้า', maxWidth: 100, },
   { id: 'Bar1', numeric: false, disablePadding: false, label: 'บาร์โค้ด 1', checkHead: true },
   { id: 'Bar2', numeric: false, disablePadding: false, label: 'บาร์โค้ด 2', checkHead: true },
   { id: 'Bar3', numeric: false, disablePadding: false, label: 'บาร์โค้ด 3', checkHead: true },
-  { id: 'SupID', numeric: true, disablePadding: false, label: 'รหัส Sup', maxWidth: 40, },
+  { id: 'SupID', numeric: true, disablePadding: false, label: 'รหัส Sup', maxWidth: 60, },
   { id: 'SupName', numeric: false, disablePadding: false, label: 'ชื่อ Sup' },
-  { id: 'CatID', numeric: true, disablePadding: false, label: 'รหัส Category', maxWidth: 40, },
+  { id: 'CatID', numeric: true, disablePadding: false, label: 'รหัส Category', maxWidth: 60, },
   { id: 'CatName', numeric: false, disablePadding: false, label: 'ชื่อ Category' },
-  { id: 'SubCatCode', numeric: true, disablePadding: false, label: 'Sub Category Code',maxWidth: 40, },
+  { id: 'SubCatCode', numeric: true, disablePadding: false, label: 'Sub Category Code',maxWidth: 60, },
   { id: 'SubCatName', numeric: false, disablePadding: false, label: 'Sub Category Name' },
-  { id: 'NR', numeric: true, disablePadding: false, label: 'N-N/R)', maxWidth: 20, },
+  { id: 'NR', numeric: true, disablePadding: false, label: 'N-N/R)', maxWidth: 40, },
   { id: 'Status', numeric: true, disablePadding: false, label: 'สถานะสินค้า' },
 ];
 
@@ -255,7 +255,7 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell style={{ maxWidth: 30 }} padding="checkbox">
+        <TableCell style={{ maxWidth: 50 }} padding="checkbox">
           <Checkbox
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
@@ -264,7 +264,7 @@ function EnhancedTableHead(props) {
             style={{padding:"0",opacity:"0"}}
           />
         </TableCell>
-        <TableCell style={{ maxWidth: 30 }} padding="checkbox">
+        <TableCell style={{ maxWidth: 50 }} padding="checkbox">
           No.
         </TableCell>
         {headCells.map((headCell) => (
@@ -372,11 +372,17 @@ EnhancedTableHead.propTypes = {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.ProID);
+      const newSelecteds = filteredPosts.map((n) => n.ProID);
       setSelected(newSelecteds);
+      setBar1Selected(newSelecteds);
+      setBar2Selected(newSelecteds);
+      setBar3Selected(newSelecteds);
       return;
     }
     setSelected([]);
+    setBar1Selected([]);
+    setBar2Selected([]);
+    setBar3Selected([]);
   };
 
   const handleClick = (event, ProID) => {
@@ -397,11 +403,15 @@ EnhancedTableHead.propTypes = {
     }
 
     setSelected(newSelected);
+    alert(newSelected)
+    setBar1Selected(newSelected);
+    setBar2Selected(newSelected);
+    setBar3Selected(newSelected);
   };
 
   const handleSelectAllBar1Click = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.ProID);
+      const newSelecteds = filteredPosts.map((n) => n.ProID);
       setBar1Selected(newSelecteds);
       return;
     }
@@ -416,7 +426,7 @@ EnhancedTableHead.propTypes = {
       newSelected = newSelected.concat(bar1Selected, Bar1);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(bar1Selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
+    } else if (selectedIndex === bar1Selected.length - 1) {
       newSelected = newSelected.concat(bar1Selected.slice(0, -1));
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
@@ -429,7 +439,7 @@ EnhancedTableHead.propTypes = {
 
   const handleSelectAllBar2Click = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.ProID);
+      const newSelecteds = filteredPosts.map((n) => n.ProID);
       setBar2Selected(newSelecteds);
       return;
     }
@@ -443,7 +453,7 @@ EnhancedTableHead.propTypes = {
       newSelected = newSelected.concat(bar2Selected, Bar2);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(bar2Selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
+    } else if (selectedIndex === bar2Selected.length - 1) {
       newSelected = newSelected.concat(bar2Selected.slice(0, -1));
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
@@ -456,7 +466,7 @@ EnhancedTableHead.propTypes = {
 
   const handleSelectAllBar3Click = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.ProID);
+      const newSelecteds = filteredPosts.map((n) => n.ProID);
       setBar3Selected(newSelecteds);
       return;
     }
@@ -470,7 +480,7 @@ EnhancedTableHead.propTypes = {
       newSelected = newSelected.concat(bar3Selected, Bar3);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(bar3Selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
+    } else if (selectedIndex === bar3Selected.length - 1) {
       newSelected = newSelected.concat(bar3Selected.slice(0, -1));
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
@@ -577,6 +587,8 @@ EnhancedTableHead.propTypes = {
   const [qCatName, setQCatName] = useState("")
   const [qSubCatName, setQSubCatName] = useState("")
 
+  const [filteredPosts, setFilteredPosts] = useState([]);
+
   function clearInput() {
     setQProID("");
     setQName("");
@@ -589,6 +601,25 @@ EnhancedTableHead.propTypes = {
     setQCatName("");
     setQSubCatName("");
   }
+//ProID, Name, Bar1, Bar2, Bar3, SupID, SupName, CatID, CatName, SubCatCode, SubCatName, NR, Status
+  React.useEffect(() => {
+    setFilteredPosts(
+      rows.filter(
+        (rows) =>
+          rows.ProID === qProID ||
+          rows.Name.toLowerCase().includes(qName !== "" && qName) ||
+          rows.Bar1.toLowerCase().includes(qBarcode !== "" && qBarcode) ||
+          rows.Bar2.toLowerCase().includes(qBarcode !== "" && qBarcode) ||
+          rows.Bar3 === qBarcode !== "" && qBarcode ||
+          rows.SupID.toLowerCase().includes(qSupID !== "" && qSupID) ||
+          rows.SupName.toLowerCase().includes(qSupName !== "" && qSupName) ||
+          rows.CatID === qCatID ||
+          rows.CatName.toLowerCase().includes(qCatName !== "" && qCatName) ||
+          rows.SubCatCode === qSubCatID ||
+          rows.SubCatName.toLowerCase().includes(qSubCatName !== "" && qSubCatName)
+      )
+    );
+  }, [qName, qProID, qBarcode, qSupID, qSupName, qCatID, qCatName, qSubCatID, qSubCatName]);
 
   // console.log(qProID);
   // Modal
@@ -741,7 +772,7 @@ EnhancedTableHead.propTypes = {
               <Typography component="p">
                 ผลการค้นหาสินค้า
                 <Box component="em" className={classes.textCounterResult}>
-                  เลือกสินค้าจำนวน 6 รายการ
+                  เลือกสินค้าจำนวน {bar1Selected.length + bar2Selected.length + bar3Selected.length } รายการ
                 </Box>
               </Typography>
               <Box display="flex">
@@ -750,6 +781,9 @@ EnhancedTableHead.propTypes = {
                     <Checkbox
                       // checked={state.checkedMaster}
                       // onChange={handleChange}
+                      // indeterminate={numSelected > 0 && numSelected < rowCount}
+                      icon={<CheckBoxOutlineBlankIcon style={{color:"rgba(0, 0, 0, 0.54)"}} />}
+                      checkedIcon={<CheckBoxIcon style={{color:"#5FA900"}} />}
                       onChange={handleSelectAllClick}
                       name="checkedMaster"
                       color="default"
@@ -787,12 +821,11 @@ EnhancedTableHead.propTypes = {
             <div 
               id="dsTable"
               className="displayTable MuiDataGrid-window" 
-              style={{overflowX:"hidden"}}
               // ref={dsTable}
             >
                 <div className="hiddenScroll" 
                 // style={{width:"150vw",}}
-                style={{overflow:'hidden'}} 
+                style={{overflow:'hidden'}}  // Remove when table scroll-Y
                 >
               <Paper className={classes.root} style={{marginBottom:'-16px'}} >
                 {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
@@ -808,21 +841,24 @@ EnhancedTableHead.propTypes = {
                     // size={dense ? "small" : "medium"}
                     aria-label="sticky table"
                   >
-                    <EnhancedTableHead
-                      classes={classes}
-                      numSelected={selected.length}
-                      numBar1Selected={bar1Selected.length}
-                      numBar2Selected={bar2Selected.length}
-                      numBar3Selected={bar3Selected.length}
-                      // order={order}
-                      // orderBy={orderBy}
-                      onSelectAllClick={handleSelectAllClick}
-                      onSelectAllBar1Click={handleSelectAllBar1Click}
-                      onSelectAllBar2Click={handleSelectAllBar2Click}
-                      onSelectAllBar3Click={handleSelectAllBar3Click}
-                      // onRequestSort={handleRequestSort}
-                      rowCount={rows.length}
-                    />
+                    {
+                      filteredPosts.length > 0 &&
+                      <EnhancedTableHead
+                        classes={classes}
+                        numSelected={selected.length}
+                        numBar1Selected={bar1Selected.length}
+                        numBar2Selected={bar2Selected.length}
+                        numBar3Selected={bar3Selected.length}
+                        // order={order}
+                        // orderBy={orderBy}
+                        onSelectAllClick={handleSelectAllClick}
+                        onSelectAllBar1Click={handleSelectAllBar1Click}
+                        onSelectAllBar2Click={handleSelectAllBar2Click}
+                        onSelectAllBar3Click={handleSelectAllBar3Click}
+                        // onRequestSort={handleRequestSort}
+                        rowCount={filteredPosts.length}
+                      />
+                    }
                     <TableBody>
                       {/* {stableSort(rows, getComparator(order, orderBy))
                         .slice(
@@ -830,7 +866,7 @@ EnhancedTableHead.propTypes = {
                           page * rowsPerPage + rowsPerPage
                         ) */}
                         
-                        {rows.map((row, index) => {
+                        {filteredPosts.map((row, index) => {
                           const isItemSelected = isSelected(row.ProID);
                           const labelId = `enhanced-table-checkbox-${index}`;
                           
@@ -857,6 +893,8 @@ EnhancedTableHead.propTypes = {
                               align="center"
                               >
                                 <Checkbox
+                                  icon={<CheckBoxOutlineBlankIcon style={{color:"rgba(0, 0, 0, 0.54)"}} />}
+                                  checkedIcon={<CheckBoxIcon style={{color:"#5FA900"}} />}
                                   style={{padding:"0"}}
                                   checked={isItemSelected}
                                   onClick={(event) => handleClick(event, row.ProID)}
@@ -905,15 +943,21 @@ EnhancedTableHead.propTypes = {
                                 <label htmlFor={labelBar2Id}>{row.Bar2}</label>
                               </TableCell>
                               <TableCell align="left">
-                                <Checkbox
-                                  icon={<CheckBoxOutlineBlankIcon style={{color:"rgba(0, 0, 0, 0.54)"}} />}
-                                  checkedIcon={<CheckBoxIcon style={{color:"#5FA900"}} />}
-                                  style={{padding:"0", marginRight:".5rem"}}
-                                  checked={isItemBar3Selected}
-                                  onClick={(event) => handleBar3Click(event, row.ProID)}
-                                  id={labelBar3Id}
-                                  />
-                                <label htmlFor={labelBar3Id}>{row.Bar3}</label>
+
+                                  <Checkbox
+                                    icon={<CheckBoxOutlineBlankIcon style={{color:"rgba(0, 0, 0, 0.54)"}} />}
+                                    checkedIcon={<CheckBoxIcon style={{color:"#5FA900"}} />}
+                                    style={{padding:"0", marginRight:".5rem"}}
+                                    checked={isItemBar3Selected}
+                                    onClick={(event) => handleBar3Click(event, row.ProID)}
+                                    id={labelBar3Id}
+                                    disabled={row.Bar3 == 0}
+                                    />
+                                  <label 
+                                  htmlFor={labelBar3Id}
+                                  className={row.Bar3 == 0 ? 'disabled' : null}
+                                  >{row.Bar3}</label>
+                                 
                                 {/* <Checkbox
                                   style={{padding:"0", marginRight:".5rem"}}
                                   checked={isItemSelected}
@@ -967,20 +1011,12 @@ EnhancedTableHead.propTypes = {
 
             </div>
 
-            {/* <div
-              id="dsTable"
-              className="displayTable"
-              // style={{ height: '80vh', width: '100%' }}
-            >
-              table
-            </div> */}
           </Box>
 
           <Dialog
             open={open}
             error={error}
             warning={warning}
-            // className={classes.modal}
             className={clsx(classes.modal, {
               [classes.error]: error,
               [classes.warning]: warning,
@@ -995,7 +1031,7 @@ EnhancedTableHead.propTypes = {
             <DialogTitle id="alert-dialog-title">
               {
                 error ? "ไม่พบข้อมูล" 
-                : warning ? "Error"
+                : warning ? "แจ้งเตือน"
                 : "กำลังค้นหา"
               }
               <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
@@ -1026,7 +1062,7 @@ EnhancedTableHead.propTypes = {
               <DialogContentText id="alert-dialog-description">
                   {
                     error ? <span>Not Found</span> 
-                    : warning ? <span>กรุณากรอกข้อมูลเพื่อค้นหา <br /> หรือ  กรอกข้อมูลเพื่อค้นหาได้ 1 ประเภท เท่านั่น!</span>
+                    : warning ? <span>กรุณากรอกข้อมูลเพื่อค้นหา</span>
                     : "กำลังค้นหา"
                   }
               </DialogContentText>
@@ -1073,7 +1109,7 @@ EnhancedTableHead.propTypes = {
             className="btn-main"
             component={Link}
             to="/promotion/Step3"
-            // disabled={alignment !== "" ? false : true}
+            disabled={bar1Selected.length + bar2Selected.length + bar3Selected.length > 0 ? false : true}
           >
             เพิ่มสินค้า
           </Button>
