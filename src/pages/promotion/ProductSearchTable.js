@@ -39,7 +39,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
 import TextField from "@material-ui/core/TextField";
-import { RiErrorWarningFill, RiCloseCircleFill } from "react-icons/ri";
+import { RiErrorWarningFill, RiCloseCircleFill, RiMessage3Fill } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
 import { IoTrash } from "react-icons/io5";
 import {
@@ -151,6 +151,12 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   error: {
+    "& .MuiDialogTitle-root": { 
+      backgroundColor: "#C93D3D", 
+      color:"#fff",
+    }
+  },
+  err404: {
     "& .MuiDialogTitle-root": { 
       backgroundColor: "#C93D3D", 
       color:"#fff",
@@ -403,10 +409,11 @@ EnhancedTableHead.propTypes = {
     }
 
     setSelected(newSelected);
-    // alert(newSelected)
+    // alert(newSelected) ยังมี Bug เมื่อกด check ให้ทั้ง barcode 1 2 3 All แต่ ไปรีเซ็ทที่ Row อื่นด้วย!!!
     setBar1Selected(newSelected);
     setBar2Selected(newSelected);
     setBar3Selected(newSelected);
+    // ยังมี Bug เมื่อกด check ให้ทั้ง barcode 1 2 3 All แต่ ไปรีเซ็ทที่ Row อื่นด้วย!!!
   };
 
   const handleSelectAllBar1Click = (event) => {
@@ -625,6 +632,7 @@ EnhancedTableHead.propTypes = {
           rows.SubCatName.toLowerCase().includes(qSubCatName !== "" && qSubCatName)
       )
     );
+    
   }, [qName, qProID, qBarcode, qSupID, qSupName, qCatID, qCatName, qSubCatID, qSubCatName]);
 
   // console.log(qProID);
@@ -632,6 +640,7 @@ EnhancedTableHead.propTypes = {
   const [open, setOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [warning, setWarning] = React.useState(true);
+  const [err404, setErr404] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -1023,9 +1032,11 @@ EnhancedTableHead.propTypes = {
             open={open}
             error={error}
             warning={warning}
+            err404={err404}
             className={clsx(classes.modal, {
               [classes.error]: error,
               [classes.warning]: warning,
+              [classes.err404]: err404,
             })}
             // onClose={handleClose}
             // fullWidth
@@ -1037,6 +1048,7 @@ EnhancedTableHead.propTypes = {
             <DialogTitle id="alert-dialog-title">
               {
                 error ? "ไม่พบข้อมูล" 
+                : err404 ? "404 Error"
                 : warning ? "แจ้งเตือน"
                 : "กำลังค้นหา"
               }
@@ -1047,6 +1059,11 @@ EnhancedTableHead.propTypes = {
             <DialogContent>
               {
                   error ? <RiCloseCircleFill 
+                  size="7rem" 
+                  color="#C93D3D"
+                  style={{marginBottom:"1.5rem"}}
+                />
+                  : err404 ? <RiMessage3Fill 
                   size="7rem" 
                   color="#C93D3D"
                   style={{marginBottom:"1.5rem"}}
@@ -1067,9 +1084,13 @@ EnhancedTableHead.propTypes = {
               
               <DialogContentText id="alert-dialog-description">
                   {
-                    error ? <span>Not Found</span> 
-                    : warning ? <span>กรุณากรอกข้อมูลเพื่อค้นหา</span>
-                    : "กำลังค้นหา"
+                    error ? <span onClick={()=>{setError(false); 
+                      setErr404(true);
+                    }}>Not Found</span> 
+                    : err404 ? <span onClick={()=>{setErr404(false);
+                      setWarning(true);}}>Page Not Found :(</span>
+                    : warning ? <span onClick={()=>setWarning(false)}>กรุณากรอกข้อมูลเพื่อค้นหา</span>
+                    : <span onClick={()=>setError(true)}>กำลังค้นหา</span>
                   }
               </DialogContentText>
             </DialogContent>
