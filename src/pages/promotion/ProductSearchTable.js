@@ -240,7 +240,7 @@ const headCells = [
   { id: 'SupName', numeric: false, disablePadding: false, label: 'ชื่อ Sup' },
   { id: 'CatID', numeric: true, disablePadding: false, label: 'รหัส Category', maxWidth: 60, },
   { id: 'CatName', numeric: false, disablePadding: false, label: 'ชื่อ Category' },
-  { id: 'SubCatCode', numeric: true, disablePadding: false, label: 'Sub Category Code',maxWidth: 60, },
+  { id: 'SubCatCode', numeric: true, disablePadding: false, label: 'Sub Category Code',maxWidth: 70, },
   { id: 'SubCatName', numeric: false, disablePadding: false, label: 'Sub Category Name' },
   { id: 'NR', numeric: true, disablePadding: false, label: 'N-N/R)', maxWidth: 40, },
   { id: 'Status', numeric: true, disablePadding: false, label: 'สถานะสินค้า' },
@@ -403,7 +403,7 @@ EnhancedTableHead.propTypes = {
     }
 
     setSelected(newSelected);
-    alert(newSelected)
+    // alert(newSelected)
     setBar1Selected(newSelected);
     setBar2Selected(newSelected);
     setBar3Selected(newSelected);
@@ -522,6 +522,9 @@ EnhancedTableHead.propTypes = {
   const btnLeft = () => {
     scrollLeft(dsTable, -dsTable.current.scrollWidth, 300);   
     document
+          .querySelector(".displayTable")
+          .classList.remove("fix-head");
+    document
           .querySelector("#left-button")
           .classList.add("disabled");
     document
@@ -531,6 +534,9 @@ EnhancedTableHead.propTypes = {
  
   const btnRight = () => {
     scrollLeft(dsTable, dsTable.current.scrollWidth, 300);
+    document
+          .querySelector(".displayTable")
+          .classList.add("fix-head");
     document
           .querySelector("#left-button")
           .classList.remove("disabled");   
@@ -825,12 +831,12 @@ EnhancedTableHead.propTypes = {
             >
                 <div className="hiddenScroll" 
                 // style={{width:"150vw",}}
-                style={{overflow:'hidden'}}  // Remove when table scroll-Y
+                style={{overflow:'hidden'}}  
                 >
               <Paper className={classes.root} style={{marginBottom:'-16px'}} >
                 {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
                 <TableContainer 
-                // style={{maxHeight:"400px"}} 
+                style={{maxHeight:"calc(100vh - 300px)"}}  // Remove when table scroll-Y
                 ref={dsTable}
                 >
                   <Table
