@@ -179,17 +179,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const schema = yup.object().shape({
-  qProID: yup.string(),
-  qName: yup.string(),
-  qBarcode: yup.string(),
-  qSupID: yup.string(),
-  qSupName: yup.string(),
-
-  qCatID: yup.string(),
-  qCatName: yup.string(),
-  qSubCatID: yup.string(),
-  qSubCatName: yup.string(),
-
+  name: yup.string().required('ชื่อหมวดหมู่ห้ามว่าง'),
+  // id: yup.string().required('ชื่อหมวดหมู่ห้ามว่าง'),
 });
 
 const ProductSearch = () => {
@@ -687,18 +678,16 @@ EnhancedTableHead.propTypes = {
   const [filteredPosts, setFilteredPosts] = useState([]);
 
   function clearInput() {
-    // setQProID("");
-    // setQName("");
-    // setQBarcode("");
-    // setQSupID("");
-    // setQSupName("");
+    setQProID("");
+    setQName("");
+    setQBarcode("");
+    setQSupID("");
+    setQSupName("");
 
-    // setQCatID("");
-    // setQSubCatID("");
-    // setQCatName("");
-    // setQSubCatName("");
-
-    setFilteredPosts([]);
+    setQCatID("");
+    setQSubCatID("");
+    setQCatName("");
+    setQSubCatName("");
 
     setSelected([]);
     setBar1Selected([]);
@@ -711,33 +700,31 @@ EnhancedTableHead.propTypes = {
   // console.log("Select bar3" + bar3Selected)
 
 //ProID, Name, Bar1, Bar2, Bar3, SupID, SupName, CatID, CatName, SubCatCode, SubCatName, NR, Status
-
-  // React.useEffect(() => {
-  //   setFilteredPosts(
-  //     rows.filter(
-  //       (rows) =>
-  //         rows.ProID === qProID ||
-  //         rows.Name.toLowerCase().includes(qName !== "" && qName) ||
-  //         rows.Bar1.toLowerCase().includes(qBarcode !== "" && qBarcode) ||
-  //         rows.Bar2.toLowerCase().includes(qBarcode !== "" && qBarcode) ||
-  //         rows.Bar3 === qBarcode ||
-  //         rows.SupID === qSupID ||
-  //         rows.SupName.toLowerCase().includes(qSupName !== "" && qSupName) ||
-  //         rows.CatID === qCatID ||
-  //         rows.CatName.toLowerCase().includes(qCatName !== "" && qCatName) ||
-  //         rows.SubCatCode === qSubCatID ||
-  //         rows.SubCatName.toLowerCase().includes(qSubCatName !== "" && qSubCatName)
-  //     )
-  //   );
+  React.useEffect(() => {
+    setFilteredPosts(
+      rows.filter(
+        (rows) =>
+          rows.ProID === qProID ||
+          rows.Name.toLowerCase().includes(qName !== "" && qName) ||
+          rows.Bar1.toLowerCase().includes(qBarcode !== "" && qBarcode) ||
+          rows.Bar2.toLowerCase().includes(qBarcode !== "" && qBarcode) ||
+          rows.Bar3 === qBarcode ||
+          rows.SupID === qSupID ||
+          rows.SupName.toLowerCase().includes(qSupName !== "" && qSupName) ||
+          rows.CatID === qCatID ||
+          rows.CatName.toLowerCase().includes(qCatName !== "" && qCatName) ||
+          rows.SubCatCode === qSubCatID ||
+          rows.SubCatName.toLowerCase().includes(qSubCatName !== "" && qSubCatName)
+      )
+    );
     
-  // }, [qName, qProID, qBarcode, qSupID, qSupName, qCatID, qCatName, qSubCatID, qSubCatName]);
+  }, [qName, qProID, qBarcode, qSupID, qSupName, qCatID, qCatName, qSubCatID, qSubCatName]);
 
   // console.log(qProID);
   // Modal
   const [open, setOpen] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
-  const [warning, setWarning] = React.useState(false);
+  const [warning, setWarning] = React.useState(true);
   const [err404, setErr404] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -749,69 +736,7 @@ EnhancedTableHead.propTypes = {
   };
 
   const onSubmit = async (data) => {
-    // !qName && !qProID && !qBarcode && !qSupID && !qSupName && !qCatID && !qCatName && !qSubCatID && !qSubCatName
-    console.log(data, errors)
-    if(!data.qName && !data.qProID && !data.qBarcode && !data.qSupID && !data.qSupName && !data.qCatID && !data.qCatName && !data.qSubCatID && !data.qSubCatName) {
-      setOpen(true)
-      setWarning(true)
-    } else {
-      setOpen(true)
-      setWarning(false)
-      setLoading(true)
-
-      // setQProID(data.qProID);
-      // setQName(data.qName);
-      // setQBarcode(data.qBarcode);
-      // setQSupID(data.qSupID);
-      // setQSupName(data.qSupName);
-
-      // setQCatID(data.qCatID);
-      // setQSubCatID(data.qSubCatID);
-      // setQCatName(data.qCatName);
-      // setQSubCatName(data.qSubCatName);
-      // const newDataFilter = []
-      
-      const newDataFilter = rows.filter(
-        (rows) =>
-          rows.ProID === data.qProID ||
-          rows.Name.toLowerCase().includes(data.qName) ||
-          rows.Bar1.toLowerCase().includes(data.qBarcode) ||
-          rows.Bar2.toLowerCase().includes(data.qBarcode) ||
-          rows.Bar3 === data.qBarcode ||
-          rows.SupID === data.qSupID ||
-          rows.SupName.toLowerCase().includes(data.qSupName) ||
-          rows.CatID === data.qCatID ||
-          rows.CatName.toLowerCase().includes(data.qCatName) ||
-          rows.SubCatCode === data.qSubCatID ||
-          rows.SubCatName.toLowerCase().includes(data.qSubCatName)
-      )
-      
-      if(newDataFilter.length !== 0) {
-        setFilteredPosts(newDataFilter);
-        setError(false)
-        setTimeout(() => {
-          setOpen(false)
-          setLoading(false)
-          
-        }, 1000);
-        // setOpen(false)
-        // setError(false)
-        
-      } else {
-        // setFilteredPosts(newDataFilter);
-        setFilteredPosts([]);
-        setOpen(true)
-        setError(true)
-      }
-      
-      //fake Loading
-      // setTimeout(() => {
-      //   setOpen(false)
-      //   setLoading(false)
-      // }, 1000);
-
-      
-    }
+    console.log(data)
     // const apiUrl = 'https://api.codingthailand.com/api/category'
     // const resp = await axios.put(apiUrl, {
     //     id: id,
@@ -819,8 +744,6 @@ EnhancedTableHead.propTypes = {
     // })
     // alert(resp.data.message) //บันทึกข้อมูลเรียบร้อย
 };
-
-console.log({open, warning, loading, error, err404})
 
   return (
     <>
@@ -856,31 +779,46 @@ console.log({open, warning, loading, error, err404})
                   <TextField 
                     id="search-id" 
                     label="รหัสสินค้า"
-                    {...register("qProID")}
+                    value={qProID}
+                    onChange={(e) => {
+                      setQProID(e.target.value);
+                    }}
                    />
                 </Grid>
                 <Grid item xs={12} sm={3} md>
                   <TextField 
                   id="search-name" 
                   label="ชื่อสินค้า"
-                  {...register("qName")}
+                  value={qName}
+                    onChange={(e) => {
+                      setQName(e.target.value);
+                    }}
                    />
                 </Grid>
                 <Grid item xs={12} sm={3} md>
                   <TextField 
                   id="search-barcode" 
                   label="บาร์โค้ด" 
-                  {...register("qBarcode")}
+                  value={qBarcode}
+                    onChange={(e) => {
+                      setQBarcode(e.target.value);
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={3} md>
                   <TextField id="search-supID" label="รหัส Supplier"
-                  {...register("qSupID")}
+                  value={qSupID}
+                    onChange={(e) => {
+                      setQSupID(e.target.value);
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={3} md>
                   <TextField id="search-supName" label="ชื่อ Supplier" 
-                  {...register("qSupName")}
+                  value={qSupName}
+                    onChange={(e) => {
+                      setQSupName(e.target.value);
+                    }}
                   />
                 </Grid>
               </Grid>
@@ -888,22 +826,34 @@ console.log({open, warning, loading, error, err404})
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={3} md>
                   <TextField id="search-catID" label="รหัส Category" 
-                  {...register("qCatID")}
+                  value={qCatID}
+                    onChange={(e) => {
+                      setQCatID(e.target.value);
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={3} md>
                   <TextField id="search-subCatID" label="รหัส Sub Category" 
-                  {...register("qSubCatID")}
+                  value={qSubCatID}
+                    onChange={(e) => {
+                      setQSubCatID(e.target.value);
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={3} md>
                   <TextField id="search-catName" label="ชื่อ Category"
-                  {...register("qCatName")}
+                  value={qCatName}
+                    onChange={(e) => {
+                      setQCatName(e.target.value);
+                    }} 
                   />
                 </Grid>
                 <Grid item xs={12} sm={3} md>
                   <TextField id="search-subCatName" label="ชื่อ Sub Category"
-                  {...register("qSubCatName")}
+                  value={qSubCatName}
+                    onChange={(e) => {
+                      setQSubCatName(e.target.value);
+                    }} 
                   />
                 </Grid>
                 <Grid item xs={12} sm={3} md></Grid>
@@ -913,7 +863,10 @@ console.log({open, warning, loading, error, err404})
               <Button 
                 className={classes.btnSaearch} 
                 variant="contained"
-                type="submit"
+                onClick={handleClickOpen}
+                // onClick={() => {
+                //   setModalShow(true)
+                // }}
               >
                 <FiSearch size="1.2rem" style={{ marginRight: ".5rem" }} />
                 ค้นหา
@@ -1018,7 +971,28 @@ console.log({open, warning, loading, error, err404})
                         rowCount={filteredPosts.length}
                       />
                     }
+                    {/* {
+                      (
+                        qProID !== "" ||
+                        qName !== "" ||
+                        qBarcode !== "" ||
+                        qSupID !== "" ||
+                        qSupName !== ""||
+                        qCatID !== "" ||
+                        qSubCatID !== "" ||
+                        qCatName !== "" ||
+                        qSubCatName !== ""
+                      ) ?
 
+                        filteredPosts.length > 0 ?
+                        <span onClick={()=>{setOpen(true); setWarning(false)}}>Loading</span>
+                        :
+                        <span onClick={()=>{setOpen(true); setError(true)}}>ไม่พบข้อมูล</span>
+                        // ()=>setOpen(true)
+
+                      :
+                      "warning"
+                    } */}
                     <TableBody>
                       {/* {stableSort(rows, getComparator(order, orderBy))
                         .slice(
@@ -1182,7 +1156,6 @@ console.log({open, warning, loading, error, err404})
 
           <Dialog
             open={open}
-            loading={loading}
             error={error}
             warning={warning}
             err404={err404}
@@ -1210,7 +1183,6 @@ console.log({open, warning, loading, error, err404})
               </IconButton>
             </DialogTitle>
             <DialogContent>
-              
               {
                   error ? <RiCloseCircleFill 
                   size="7rem" 
@@ -1237,15 +1209,25 @@ console.log({open, warning, loading, error, err404})
               
               
               <DialogContentText id="alert-dialog-description">
-              
                   {
-                    error ? <span>Not Found</span> 
-                    : err404 ? <span>Page Not Found :(</span>
-                    : warning ? <span>กรุณากรอกข้อมูลเพื่อค้นหา</span>
-                    : <span>กำลังค้นหา</span>
+                    error ? <span onClick={()=>{setError(false); 
+                      setErr404(true);
+                    }}>Not Found</span> 
+                    : err404 ? <span onClick={()=>{setErr404(false);
+                      setWarning(true);}}>Page Not Found :(</span>
+                    : warning ? <span onClick={()=>setWarning(false)}>กรุณากรอกข้อมูลเพื่อค้นหา</span>
+                    : <span onClick={()=>setError(true)}>กำลังค้นหา</span>
                   }
               </DialogContentText>
             </DialogContent>
+            {/* <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Disagree
+              </Button>
+              <Button onClick={handleClose} color="primary" autoFocus>
+                Agree
+              </Button>
+            </DialogActions> */}
           </Dialog>
 
         </Box>
