@@ -754,6 +754,7 @@ EnhancedTableHead.propTypes = {
     if(!data.qName && !data.qProID && !data.qBarcode && !data.qSupID && !data.qSupName && !data.qCatID && !data.qCatName && !data.qSubCatID && !data.qSubCatName) {
       setOpen(true)
       setWarning(true)
+      setError(false)
     } else {
       setOpen(true)
       setWarning(false)
